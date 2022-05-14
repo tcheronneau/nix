@@ -1,5 +1,25 @@
 with import <nixpkgs> {};
-
+let
+  neomux = pkgs.vimUtils.buildVimPlugin {
+    name = "neomux";
+    src = pkgs.fetchFromGitHub {
+      owner = "nikvdp";
+      repo = "neomux";
+      rev = "7fa6754f3c781ca99fd533217443b1e4f86611d4";
+      sha256 = "sha256-6Gr6/soyN5r+NRpDrFs9aT/assuQF9ydR3TfZnPlygI=";
+    };
+  };
+  vim-devicons = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-devicons";
+    src = pkgs.fetchFromGitHub {
+      owner = "ryanoasis";
+      repo = "vim-devicons";
+      rev = "a2258658661e42dd4cdba4958805dbad1fe29ef4";
+      sha256 = "sha256-bS1vUKzdzUZ1RYDbYWujF2z8EOd9o01/0VqMYUaNihA=";
+      #sha256 = "0000000000000000000000000000000000000000000000000000";
+    };
+  };
+in
 neovim.override {
   configure = {
     customRC = ''
@@ -272,8 +292,8 @@ neovim.override {
       '';
     packages.myVimPackage = with pkgs.vimPlugins; {
       # see examples below how to use custom packages
-      start = [ vim-one vim-nix nerdtree coc-nvim fzf vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons ];
+      start = [ vim-one vim-nix nerdtree coc-nvim fzf vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons ];
       opt = [ ];
-    }; 
+    };
   };
 }

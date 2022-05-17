@@ -178,6 +178,9 @@ neovim.override {
           \ 'coc-json', 
           \ 'coc-pyright',
           \ ]
+        let g:coc_filetype_map = {
+          \ 'yaml.ansible': 'ansible',
+          \ }
         " from readme
         " if hidden is not set, TextEdit might fail.
         set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
@@ -301,7 +304,7 @@ neovim.override {
       '';
     packages.myVimPackage = with pkgs.vimPlugins; {
       # see examples below how to use custom packages
-      start = [ vim-one vim-nix nerdtree coc-nvim fzf vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ];
+      start = [ vim-one vim-nix nerdtree coc-nvim fzf vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim ];
       opt = [ ];
     };
   };

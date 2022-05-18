@@ -1,0 +1,36 @@
+#!/bin/bash
+USERNAME=l0030
+
+
+if [ -z "$1" ]
+then
+        echo "This script requires one parameter : ENV"
+else
+        ENV=$1
+        unset HTTPS_PROXY
+        export VAULT_SKIP_VERIFY="true"
+        if [ "${ENV}" = "PPR" ]
+        then
+                echo "Passing PPR variable to your bash"
+                export VAULT_ADDR="https://vault.kube-dev.luxhub.local"
+                unset VAULT_TOKEN
+                vault login -method=ldap username=${USERNAME}
+        elif [ "${ENV}" = "PRD" ]
+        then
+                echo "Passing PRD variable to your bash"
+                echo "Please enter your ldap password for the proxy and vault (will be hidden)"
+                read -s -r PASSWORD
+                PASS=${PASSWORD}
+                export LDAP_PASS=$(urlencode ${PASS})
+                export HTTPS_PROXY=http://${USERNAME}:${LDAP_PASS}@jump-prd.luxhub.local:3128
+                export VAULT_ADDR="https://vault.kube-prd.luxhub.local"
+                unset VAULT_TOKEN
+                vault login -method=ldap username=${USERNAME}
+        elif [ "${ENV}" = "perso" ]
+        then
+                echo "Passing perso variable to your bash"
+                export VAULT_ADDR="https://vault.mcth.fr"
+                unset VAULT_TOKEN
+                vault login -method=ldap username=thomas
+        fi
+fi

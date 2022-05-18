@@ -19,6 +19,15 @@ let
       #sha256 = "0000000000000000000000000000000000000000000000000000";
     };
   };
+  coc-ansible = pkgs.vimUtils.buildVimPlugin {
+    name = "coc-ansible";
+    src = pkgs.fetchFromGitHub {
+      owner = "yaegassy";
+      repo = "coc-ansible";
+      rev = "15fdc8503925427c6810a2da0b4c0c780a0d2c75";
+      sha256 = "sha256-K7XtihHksv01x9j/faKRNzWn9nI9iomFYTFyYMO5QLc=";
+    };
+  };
 in
 neovim.override {
   configure = {
@@ -169,6 +178,9 @@ neovim.override {
           \ 'coc-json', 
           \ 'coc-pyright',
           \ ]
+        let g:coc_filetype_map = {
+          \ 'yaml.ansible': 'ansible',
+          \ }
         " from readme
         " if hidden is not set, TextEdit might fail.
         set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
@@ -292,7 +304,7 @@ neovim.override {
       '';
     packages.myVimPackage = with pkgs.vimPlugins; {
       # see examples below how to use custom packages
-      start = [ vim-one vim-nix nerdtree coc-nvim fzf vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons ];
+      start = [ vim-one vim-nix nerdtree coc-nvim fzf vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim ];
       opt = [ ];
     };
   };

@@ -1,16 +1,16 @@
-with import <nixpkgs> {};
+with import <nixpkgs> { };
 
-pkgs.stdenv.mkDerivation rec {
+stdenv.mkDerivation rec {
   pname = "mybash";
   version = "0.1.0";
 
-  src = builtins.fetchGit {
+  src = fetchGit {
     url = "git@gitlab.mcth.fr:thomas/awesome-script.git";
     rev = "f20cff4231c58c674d5b03794a3f6ae625204d98";
   };
 
   buildInputs = [
-    pkgs.bash
+    bash
   ];
 
   configurePhase = ''

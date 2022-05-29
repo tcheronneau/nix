@@ -1,4 +1,4 @@
-with import <nixpkgs> { };
+{ pkgs, stdenv, bash }: 
 
 stdenv.mkDerivation rec {
   pname = "mybash";

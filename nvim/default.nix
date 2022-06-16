@@ -38,6 +38,15 @@ let
       sha256 = "sha256-K7XtihHksv01x9j/faKRNzWn9nI9iomFYTFyYMO5QLc=";
     };
   };
+  blamer = pkgs.vimUtils.buildVimPlugin {
+    name = "blamer";
+    src = pkgs.fetchFromGitHub {
+      owner = "APZelos";
+      repo = "blamer.nvim";
+      rev = "f4eb22a9013642c411725fdda945ae45f8d93181";
+      sha256 = "sha256-etLCmzOMi7xjYc43ZBqjPnj2gqrrSbmtcKdw6eZT8rM=";
+    };
+  };
 in
 pkgs.neovim.override {
   configure = {
@@ -61,6 +70,7 @@ pkgs.neovim.override {
         let g:airline#extensions#tabline#enabled = 1
         let g:airline#extensions#tabline#left_sep = ' '
         let g:airline#extensions#tabline#left_alt_sep = '|'
+        let g:blamer_enabled = 1
         
         "" RUST
         syntax enable
@@ -314,7 +324,7 @@ pkgs.neovim.override {
       '';
     packages.myVimPackage = with pkgs.vimPlugins; {
       # see examples below how to use custom packages
-      start = [ vim-one vim-nix nerdtree coc-nvim fzf vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim ];
+      start = [ blamer vim-one vim-nix nerdtree coc-nvim fzf vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim ];
       opt = [ ];
     };
   };

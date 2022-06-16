@@ -20,15 +20,6 @@ let
       #sha256 = "0000000000000000000000000000000000000000000000000000";
     };
   };
-  fzf = pkgs.vimUtils.buildVimPlugin {
-    name = "fzf";
-    src = pkgs.fetchFromGitHub {
-      owner = "junegunn";
-      repo = "fzf.vim";
-      rev = "d5f1f8641b24c0fd5b10a299824362a2a1b20ae0";
-      sha256 = "sha256-AuJvZAQiHQjNIdgtc1Jb+sDrA1gFt+2D9IFcvbxs0ac=";
-    };
-  };
   coc-ansible = pkgs.vimUtils.buildVimPlugin {
     name = "coc-ansible";
     src = pkgs.fetchFromGitHub {
@@ -324,7 +315,7 @@ pkgs.neovim.override {
       '';
     packages.myVimPackage = with pkgs.vimPlugins; {
       # see examples below how to use custom packages
-      start = [ blamer vim-one vim-nix nerdtree coc-nvim fzf vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim ];
+      start = [ blamer vim-one vim-nix nerdtree coc-nvim fzf-vim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim ];
       opt = [ ];
     };
   };

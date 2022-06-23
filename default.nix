@@ -2,4 +2,5 @@
 rec {
     nvim = pkgs.callPackage ./nvim {};
     scripts = pkgs.callPackage ./mybash {};
+    enpass = pkgs.callPackage ./enpass {};
 }

@@ -1,7 +1,6 @@
 { pkgs }:
-pkgs.dockerTools.buildLayeredImage
-  {
-    name = "sonarr.nix";
+pkgs.dockerTools.buildLayeredImage {
+    name = "hub.mcth.fr/sonarr.nix";
     contents = [ pkgs.sonarr ];
     tag = "latest";
     created = "now";

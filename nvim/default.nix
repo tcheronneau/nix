@@ -103,6 +103,8 @@ pkgs.neovim.override {
         "nnoremap <silent> <C-k><C-s> :mks!<CR>
         "nnoremap <silent> <C-k><C-r> :source Session.vim<CR>
         nnoremap <C-n> :set nu!<CR>
+        nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+        nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
         
         " Some FZF update for search
         nnoremap <C-f> :Files<CR>

@@ -91,7 +91,11 @@ pkgs.neovim.override {
         
         " Trigger NERDTree at startup if no file + map open shortcut
         nnoremap <silent> <C-k><C-B> :NERDTreeToggle<CR>
-        autocmd VimEnter * NERDTree
+        let NERDTreeShowHidden=1
+        " https://gist.github.com/avesus/1954d9384d86cc1e39cb2b2eff7017b7
+        autocmd VimEnter * call s:syncTree()
+        au VimEnter * :wincmd w
+        autocmd FileType nerdtree noremap <buffer> <Tab> <nop>
         "function! StartUp()                                                                                                                                                                                         
         "    if 0 == argc()
         "        NERDTree

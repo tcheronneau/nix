@@ -93,6 +93,17 @@ pkgs.neovim.override {
         nnoremap <silent> <C-k><C-B> :NERDTreeToggle<CR>
         let NERDTreeShowHidden=1
         " https://gist.github.com/avesus/1954d9384d86cc1e39cb2b2eff7017b7
+        function! s:syncTree()
+          let s:curwnum = winnr()
+          NERDTreeFind
+          exec s:curwnum . "wincmd w"
+        endfunction
+        
+        function! s:syncTreeIf()
+          if (winnr("$") > 1)
+            call s:syncTree()
+          endif
+        endfunction
         autocmd VimEnter * call s:syncTree()
         au VimEnter * :wincmd w
         autocmd FileType nerdtree noremap <buffer> <Tab> <nop>

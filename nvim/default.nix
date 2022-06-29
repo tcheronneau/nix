@@ -94,6 +94,9 @@ pkgs.neovim.override {
         let NERDTreeShowHidden=1
         " https://gist.github.com/avesus/1954d9384d86cc1e39cb2b2eff7017b7
         function! s:syncTree()
+          if 0 == argc()
+            NERDTree
+          end
           let s:curwnum = winnr()
           NERDTreeFind
           exec s:curwnum . "wincmd w"

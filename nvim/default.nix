@@ -93,28 +93,12 @@ pkgs.neovim.override {
         nnoremap <silent> <C-k><C-B> :NERDTreeToggle<CR>
         let NERDTreeShowHidden=1
         " https://gist.github.com/avesus/1954d9384d86cc1e39cb2b2eff7017b7
-        function! s:syncTree()
-          if 0 == argc()
-            NERDTree
-          end
-          let s:curwnum = winnr()
-          NERDTreeFind
-          exec s:curwnum . "wincmd w"
-        endfunction
-        
-        function! s:syncTreeIf()
-          if (winnr("$") > 1)
-            call s:syncTree()
-          endif
-        endfunction
-        autocmd VimEnter * call s:syncTree()
-        au VimEnter * :wincmd w
         autocmd FileType nerdtree noremap <buffer> <Tab> <nop>
-        "function! StartUp()                                                                                                                                                                                         
-        "    if 0 == argc()
-        "        NERDTree
-        "    end
-        "endfunction
+        function! StartUp()                                                                                                                                                                                         
+            if 0 == argc()
+                NERDTree
+            end
+        endfunction
         
         " Term mode escape
         tnoremap <Esc> <C-\><C-n>
@@ -133,7 +117,7 @@ pkgs.neovim.override {
         
         nnoremap <silent> <C-w><C-t> :sp<CR>:resize 10<CR>:Neomux<CR>
         
-        "autocmd VimEnter * call StartUp()
+        autocmd VimEnter * call StartUp()
         let g:chromatica#libclang_path='/usr/lib/llvm-11/lib/'
         let g:chromatica#enable_at_startup=1
         " Grep not opening file

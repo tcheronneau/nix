@@ -91,11 +91,12 @@ pkgs.neovim.override {
         
         " Trigger NERDTree at startup if no file + map open shortcut
         nnoremap <silent> <C-k><C-B> :NERDTreeToggle<CR>
-        function! StartUp()                                                                                                                                                                                         
-            if 0 == argc()
-                NERDTree
-            end
-        endfunction
+        autocmd VimEnter * NERDTree
+        "function! StartUp()                                                                                                                                                                                         
+        "    if 0 == argc()
+        "        NERDTree
+        "    end
+        "endfunction
         
         " Term mode escape
         tnoremap <Esc> <C-\><C-n>

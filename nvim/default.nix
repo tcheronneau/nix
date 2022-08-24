@@ -349,7 +349,7 @@ pkgs.neovim.override {
       '';
     packages.myVimPackage = with pkgs.vimPlugins; {
       # see examples below how to use custom packages
-      start = [ blamer vim-one vim-nix nerdtree coc-nvim fzf-vim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim ];
+      start = [ blamer vim-one vim-nix nerdtree coc-nvim fzf-vim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim coc-go ];
       opt = [ ];
     };
   };

@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixos-unstable> { } }:
 
 let
   neomux = pkgs.vimUtils.buildVimPlugin {
@@ -36,6 +36,15 @@ let
       repo = "blamer.nvim";
       rev = "f4eb22a9013642c411725fdda945ae45f8d93181";
       sha256 = "sha256-etLCmzOMi7xjYc43ZBqjPnj2gqrrSbmtcKdw6eZT8rM=";
+    };
+  };
+  cheat-sh-vim = pkgs.vimUtils.buildVimPlugin {
+    name = "cheat.sh-vim";
+    src = pkgs.fetchFromGitHub {
+      owner = "dbeniamine";
+      repo = "cheat.sh-vim";
+      rev = "e0fe468d872025477462ac5d96432f5c1aee3a0d";
+      sha256 = "sha256-awowfQ4q9CCX2V7Vhf1EjKr2GaqQFPOpdwq7FT8os0Y=";
     };
   };
 in
@@ -349,7 +358,7 @@ pkgs.neovim.override {
       '';
     packages.myVimPackage = with pkgs.vimPlugins; {
       # see examples below how to use custom packages
-      start = [ blamer vim-one vim-nix coc-nvim fzf-vim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim vim-go nerdtree ];
+      start = [ blamer vim-one vim-nix coc-nvim fzf-vim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim vim-go nerdtree syntastic cheat-sh-vim ];
       opt = [ ];
     };
   };

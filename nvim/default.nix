@@ -310,7 +310,7 @@ pkgs.neovim.override {
         
         " Remap <C-f> and <C-b> for scroll float windows/popups.
         if has('nvim-0.4.0') || has('patch-8.2.0750')
-          nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+          "nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
           nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
           inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
           inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
@@ -354,16 +354,30 @@ pkgs.neovim.override {
         nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
         " Resume latest coc list.
         nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+        let g:airline#extensions#tabline#enabled = 0
 
         set termguicolors
         lua << EOF
-        require("bufferline").setup{}
+        require("bufferline").setup{
+          options= {
+            mode = "buffers",
+            indicator_icon = '▎',
+            buffer_close_icon = '',
+            modified_icon = '●',
+            close_icon = '',
+            left_trunc_marker = '',
+            right_trunc_marker = '',
+            diagnostics = "coc",
+            diagnostics_update_in_insert = false,
+            separator_style = "slant"
+          }
+        }
         EOF
 
       '';
     packages.myVimPackage = with pkgs.vimPlugins; {
       # see examples below how to use custom packages
-      start = [ blamer vim-one vim-nix coc-nvim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim vim-go nerdtree syntastic cheat-sh-vim bufferline-nvim fzf-vim ];
+      start = [ blamer vim-one vim-nix coc-nvim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim vim-go nerdtree syntastic cheat-sh-vim fzf-vim bufferline-nvim ];
       opt = [ ];
     };
   };

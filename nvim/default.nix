@@ -115,6 +115,11 @@ pkgs.neovim.override {
         "nnoremap <silent> <C-k><C-s> :mks!<CR>
         "nnoremap <silent> <C-k><C-r> :source Session.vim<CR>
         nnoremap <C-n> :set nu!<CR>
+
+        " Move accross buffer
+        nnoremap <C-w><C-l> :bn<CR>
+        nnoremap <C-w><C-k> :bp<CR>
+
         
         " Some FZF update for search
         nnoremap <C-f> :Files<CR>

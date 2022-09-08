@@ -63,7 +63,6 @@ pkgs.neovim.override {
         set splitbelow
         set splitright
         set number
-        set shell=/bin/bash
         " AIRLINE
         let g:airline_powerline_fonts = 1
         set t_Co=256
@@ -205,7 +204,6 @@ pkgs.neovim.override {
           \ 'coc-eslint', 
           \ 'coc-prettier', 
           \ 'coc-json', 
-          \ 'coc-pyright',
           \ ]
         let g:coc_filetype_map = {
           \ 'yaml.ansible': 'ansible',

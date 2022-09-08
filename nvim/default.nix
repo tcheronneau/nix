@@ -63,6 +63,7 @@ pkgs.neovim.override {
         set splitbelow
         set splitright
         set number
+        set shell=/bin/bash
         " AIRLINE
         let g:airline_powerline_fonts = 1
         set t_Co=256

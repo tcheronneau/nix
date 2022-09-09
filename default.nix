@@ -1,4 +1,4 @@
-{ pkgs ? import <nixos-unstable> {} }:
+{ pkgs ? import (builtins.fetchGit { name = "unstable"; url = "https://github.com/NixOS/nixpkgs"; rev = "nixpkgs-unstable";})> {} }:
 rec {
     nvim = pkgs.callPackage ./nvim {};
     scripts = pkgs.callPackage ./mybash {};

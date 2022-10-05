@@ -1,4 +1,4 @@
-{ pkgs ? import <nixos-unstable> { } }:
+{ pkgs }:
 
 let
   neomux = pkgs.vimUtils.buildVimPlugin {

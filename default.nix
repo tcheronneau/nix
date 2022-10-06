@@ -6,6 +6,7 @@ rec {
     sonarr = pkgs.callPackage ./sonarr {};
     jackett = pkgs.callPackage ./jackett {};
     seafile = pkgs.callPackage ./seafile {};
+    kubernetes = pkgs.callPackage ./kubernetes {};
     docker-sonarr = pkgs.callPackage ./sonarr/docker.nix {};
     docker-jackett = pkgs.callPackage ./jackett/docker.nix {};
 }

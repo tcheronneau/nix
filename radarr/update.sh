@@ -1,7 +1,7 @@
 #!/usr/bin/env nix-shell
 #!nix-shell -i bash -p curl gnused nix-prefetch jq
 
-#set -e
+set -e
 
 dirname="$(dirname "$0")"
 

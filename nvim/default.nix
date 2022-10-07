@@ -1,18 +1,18 @@
-{ pkgs ? import <nixos-unstable> { } }:
+{ fetchFromGitHub, vimUtils, neovim, vimPlugins }:
 
 let
-  neomux = pkgs.vimUtils.buildVimPlugin {
+  neomux = vimUtils.buildVimPlugin {
     name = "neomux";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "nikvdp";
       repo = "neomux";
       rev = "7fa6754f3c781ca99fd533217443b1e4f86611d4";
       sha256 = "sha256-6Gr6/soyN5r+NRpDrFs9aT/assuQF9ydR3TfZnPlygI=";
     };
   };
-  vim-devicons = pkgs.vimUtils.buildVimPlugin {
+  vim-devicons = vimUtils.buildVimPlugin {
     name = "vim-devicons";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "ryanoasis";
       repo = "vim-devicons";
       rev = "a2258658661e42dd4cdba4958805dbad1fe29ef4";
@@ -20,27 +20,27 @@ let
       #sha256 = "0000000000000000000000000000000000000000000000000000";
     };
   };
-  coc-ansible = pkgs.vimUtils.buildVimPlugin {
+  coc-ansible = vimUtils.buildVimPlugin {
     name = "coc-ansible";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "yaegassy";
       repo = "coc-ansible";
       rev = "15fdc8503925427c6810a2da0b4c0c780a0d2c75";
       sha256 = "sha256-K7XtihHksv01x9j/faKRNzWn9nI9iomFYTFyYMO5QLc=";
     };
   };
-  blamer = pkgs.vimUtils.buildVimPlugin {
+  blamer = vimUtils.buildVimPlugin {
     name = "blamer";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "APZelos";
       repo = "blamer.nvim";
       rev = "f4eb22a9013642c411725fdda945ae45f8d93181";
       sha256 = "sha256-etLCmzOMi7xjYc43ZBqjPnj2gqrrSbmtcKdw6eZT8rM=";
     };
   };
-  cheat-sh-vim = pkgs.vimUtils.buildVimPlugin {
+  cheat-sh-vim = vimUtils.buildVimPlugin {
     name = "cheat.sh-vim";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "dbeniamine";
       repo = "cheat.sh-vim";
       rev = "e0fe468d872025477462ac5d96432f5c1aee3a0d";
@@ -48,7 +48,7 @@ let
     };
   };
 in
-pkgs.neovim.override {
+neovim.override {
   configure = {
     customRC = ''
         syn on
@@ -379,7 +379,7 @@ pkgs.neovim.override {
         EOF
 
       '';
-    packages.myVimPackage = with pkgs.vimPlugins; {
+    packages.myVimPackage = with vimPlugins; {
       # see examples below how to use custom packages
       start = [ blamer vim-one vim-nix coc-nvim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim vim-go nerdtree syntastic cheat-sh-vim fzf-vim bufferline-nvim vim-nix vim-nixhash ];
       opt = [ ];

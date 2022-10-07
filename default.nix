@@ -1,5 +1,4 @@
-#{ pkgs ? import (builtins.fetchGit { name = "unstable"; url = "https://github.com/NixOS/nixpkgs"; rev = "21de2b973f9fee595a7a1ac4693efff791245c34";})> {} }:
-{ pkgs ? import <nixpkgs-unstable> {} }:
+{ pkgs ? import <nixpkgs> {} }:
 rec {
     nvim = pkgs.callPackage ./nvim {};
     scripts = pkgs.callPackage ./mybash {};
@@ -7,6 +6,7 @@ rec {
     sonarr = pkgs.callPackage ./sonarr {};
     jackett = pkgs.callPackage ./jackett {};
     seafile = pkgs.callPackage ./seafile {};
+    kubernetes = pkgs.callPackage ./kubernetes {};
     docker-sonarr = pkgs.callPackage ./sonarr/docker.nix {};
     docker-jackett = pkgs.callPackage ./jackett/docker.nix {};
 }

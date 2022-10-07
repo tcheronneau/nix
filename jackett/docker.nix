@@ -1,7 +1,7 @@
-{ pkgs }:
-let jackett = pkgs.callPackage ./default.nix {};
+{ callPackage, dockerTools }:
+let jackett = callPackage ./default.nix {};
 in 
-  pkgs.dockerTools.buildLayeredImage {
+  dockerTools.buildLayeredImage {
     name = "registry.mcth.fr/docker/jackett";
     contents = [ jackett ];
     tag = "nix";

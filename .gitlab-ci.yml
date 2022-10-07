@@ -1,0 +1,55 @@
+stages:
+  - update
+  - build
+  - release
+
+variables:
+  NAME: 
+    value: ""
+    description: "Package name to update and build"
+  VERSION:
+    value: ""
+    description: "Version of the package"
+
+
+
+update::version:
+  stage: update
+  image: local
+  tags:
+    - shell
+    - nix
+  script:
+    - if [ -f "${NAME}"/default.nix ]; then export CURR_VERSION=$(cat ./${NAME}/default.nix|awk -F'"' '/version =/ {print $2;} ') ; fi
+    - |
+      echo "New version : ${VERSION}"
+      if [ "${CURR_VERSION}" == "${VERSION}" ]
+      then
+        echo "Version matched doing nothing"
+      else
+        echo "Version mismatch updating..."
+        sed -i "s/version = \"${CURR_VERSION}/version = \"${VERSION}/g" ${NAME}/default.nix
+      fi
+
+build::package:
+  stage: build
+  image: local
+  tags: 
+    - nix
+  script: 
+    - cd ${NAME}
+    - nix-build -E 'with import <nixos-unstable> {}; callPackage ./default.nix {}'
+
+release::package:
+  stage: release
+  image: local
+  tags:
+    - shell
+  script:
+    - git config --global user.email "${CI_EMAIL}"
+    - git config --global user.name "${CI_USERNAME}"
+    - git add ${NAME} 
+    - git commit -m "Releasing new version for ${NAME} from $CI_COMMIT_SHORT_SHA [skip ci]" || echo "No changes, nothing to commit!"
+    - git remote rm origin && git remote add origin git@gitlab.mcth.fr:$CI_PROJECT_PATH.git
+    - git push origin HEAD:$CI_COMMIT_REF_NAME
+

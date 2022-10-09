@@ -15,7 +15,7 @@ update::version:
   stage: update
   image: local
   rules:
-    if: $CI_PIPELINE_SOURCE == "api"
+  - if: $CI_PIPELINE_SOURCE == "api"
   tags:
     - nix
   script:
@@ -34,7 +34,7 @@ build::package:
   stage: build
   image: local
   rules:
-    if: $CI_PIPELINE_SOURCE == "api"
+  - if: $CI_PIPELINE_SOURCE == "api"
   tags: 
     - nix
   script: 
@@ -45,7 +45,7 @@ release::package:
   stage: release
   image: local
   rules:
-    if: $CI_PIPELINE_SOURCE == "api"
+  - if: $CI_PIPELINE_SOURCE == "api"
   tags:
     - nix
   script:

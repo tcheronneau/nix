@@ -213,6 +213,7 @@ in
     services.certmgr = {
       enable = true;
       package = pkgs.certmgr-selfsigned;
+      defaultRemote = 
       svcManager = "command";
       specs =
         let

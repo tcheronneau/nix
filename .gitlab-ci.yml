@@ -34,7 +34,7 @@ update::version:
   artifacts:
     paths:
       - ${NAME}/
-    expire_in: 600
+    expire_in: '600'
 
 build::package:
   stage: build

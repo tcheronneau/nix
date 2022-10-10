@@ -2,7 +2,8 @@
 
 let
   neomux = vimUtils.buildVimPlugin {
-    name = "neomux";
+    pname = "neomux";
+    version = "test";
     src = fetchFromGitHub {
       owner = "nikvdp";
       repo = "neomux";
@@ -11,7 +12,8 @@ let
     };
   };
   vim-devicons = vimUtils.buildVimPlugin {
-    name = "vim-devicons";
+    pname = "vim-devicons";
+    version = "test";
     src = fetchFromGitHub {
       owner = "ryanoasis";
       repo = "vim-devicons";
@@ -21,7 +23,8 @@ let
     };
   };
   coc-ansible = vimUtils.buildVimPlugin {
-    name = "coc-ansible";
+    pname = "coc-ansible";
+    version = "test";
     src = fetchFromGitHub {
       owner = "yaegassy";
       repo = "coc-ansible";
@@ -30,7 +33,8 @@ let
     };
   };
   blamer = vimUtils.buildVimPlugin {
-    name = "blamer";
+    pname = "blamer";
+    version = "test";
     src = fetchFromGitHub {
       owner = "APZelos";
       repo = "blamer.nvim";
@@ -39,7 +43,8 @@ let
     };
   };
   cheat-sh-vim = vimUtils.buildVimPlugin {
-    name = "cheat.sh-vim";
+    pname = "cheat.sh-vim";
+    version = "test";
     src = fetchFromGitHub {
       owner = "dbeniamine";
       repo = "cheat.sh-vim";

@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs-unstable> {} }:
 rec {
     nvim = pkgs.callPackage ./nvim {};
     scripts = pkgs.callPackage ./mybash {};

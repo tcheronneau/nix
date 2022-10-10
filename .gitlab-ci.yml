@@ -32,12 +32,17 @@ update::version:
         sed -i "s/version = \"${CURR_VERSION}/version = \"${VERSION}/g" ${NAME}/default.nix
         cat ${NAME}/default.nix
       fi
+  artifacts:
+    paths:
+      - ${NAME}/
 
 build::package:
   stage: build
   image: local
   rules:
   - if: $CI_PIPELINE_SOURCE == "api"
+  dependencies:
+  - update::version
   tags: 
     - nix
   script: 
@@ -48,6 +53,8 @@ build::package:
 release::package:
   stage: release
   image: local
+  dependencies:
+  - update::version
   rules:
   - if: $CI_PIPELINE_SOURCE == "api"
   tags:

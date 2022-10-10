@@ -1,12 +1,14 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs? import <nixpkgs-unstable> {} }:
+#{ callPackage }:
+with pkgs;
 rec {
-    nvim = pkgs.callPackage ./nvim {};
-    scripts = pkgs.callPackage ./mybash {};
-    enpass = pkgs.callPackage ./enpass {};
-    sonarr = pkgs.callPackage ./sonarr {};
-    jackett = pkgs.callPackage ./jackett {};
-    seafile = pkgs.callPackage ./seafile {};
-    kubernetes = pkgs.callPackage ./kubernetes {};
-    docker-sonarr = pkgs.callPackage ./sonarr/docker.nix {};
-    docker-jackett = pkgs.callPackage ./jackett/docker.nix {};
+    nvim = callPackage ./nvim {};
+    scripts = callPackage ./mybash {};
+    enpass = callPackage ./enpass {};
+    sonarr = callPackage ./sonarr {};
+    jackett = callPackage ./jackett {};
+    seafile = callPackage ./seafile {};
+    kubernetes = callPackage ./kubernetes {};
+    docker-sonarr = callPackage ./sonarr/docker.nix {};
+    docker-jackett = callPackage ./jackett/docker.nix {};
 }

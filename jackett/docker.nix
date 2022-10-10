@@ -12,7 +12,11 @@ in
         "${jackett}/bin/jackett"
         "--NoUpdates"
       ];
-      Env = ["COMPlus_EnableDiagnostics=0"];
+      Env = [
+        "COMPlus_EnableDiagnostics=0"
+        "XDG_DATA_HOME=/config"
+        "XDG_CONFIG_HOME=/config"
+      ];
       ExposedPorts = {
         "9117/tcp" = { };
       };

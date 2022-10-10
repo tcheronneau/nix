@@ -67,22 +67,22 @@ release::package:
     - git commit -m "Releasing new version for ${NAME} from $CI_COMMIT_SHORT_SHA [skip ci]" || echo "No changes, nothing to commit!"
     - git remote add gitlab_origin https://oauth2:$ACCESS_TOKEN@gitlab.mcth.fr/thomas/nix.git
     - git push gitlab_origin HEAD:main
-    - git clone https://oauth2:$ACCESS_TOKEN@gitlab.mcth.fr/docker/${NAME}.git docker-${NAME}
-    - cd docker-${NAME}
-    - git tag -a ${VERSION} -m "Update to version ${VERSION} from $CI_COMMIT_SHORT_SHA"
-    - git push origin ${VERSION}
+      #- git clone https://oauth2:$ACCESS_TOKEN@gitlab.mcth.fr/docker/${NAME}.git docker-${NAME}
+      #- cd docker-${NAME}
+      #- git tag -a ${VERSION} -m "Update to version ${VERSION} from $CI_COMMIT_SHORT_SHA"
+      #- git push origin ${VERSION}
 
 
-      #build::docker:
-      #  stage: container
-      #  image: local
-      #  dependencies:
-      #    - release::package
-      #  tags:
-      #    - nix
-      #  rules:
-      #    - if: $CI_PIPELINE_SOURCE == "api"
-      #    - exists:
-      #      - ${NAME}/docker.nix
-      #  script:
-      #    - nix-shell --run ./build.sh
+build::docker:
+  stage: container
+  image: local
+  dependencies:
+    - release::package
+  tags:
+    - nix
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "api"
+    - exists:
+      - ${NAME}/docker.nix
+  script:
+    - nix-shell --run ./build.sh

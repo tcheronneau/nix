@@ -59,9 +59,6 @@ release::package:
   - if: $CI_PIPELINE_SOURCE == "api"
   tags:
     - nix
-  before_script:
-    - mkdir -p ~/.ssh
-    - echo -e "Host gitlab.mcth.fr\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
   script:
     - git config --global user.email "abott@mcth.fr"
     - git config --global user.name "Abott"
@@ -85,4 +82,5 @@ build::docker:
       - ${NAME}/docker.nix
   script:
     - cd ${NAME}
-    -  nix-build -E 'with import <nixos-unstable> {}; callPackage ./docker.nix {}'
+    - nix-shell --run ./build.sh
+

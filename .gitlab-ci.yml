@@ -85,4 +85,4 @@ build::docker:
       - ${NAME}/docker.nix
   script:
     - cd ${NAME}
-    -  nix-build -E 'with import <nixos-unstable {}; callPackage ./docker.nix {}'
+    -  nix-build -E 'with import <nixos-unstable> {}; callPackage ./docker.nix {}'

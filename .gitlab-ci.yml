@@ -2,6 +2,7 @@ stages:
   - update
   - build
   - release
+  - container
 
 variables:
   GIT_STRATEGY: clone
@@ -69,3 +70,19 @@ release::package:
     - git commit -m "Releasing new version for ${NAME} from $CI_COMMIT_SHORT_SHA [skip ci]" || echo "No changes, nothing to commit!"
     - git remote add gitlab_origin https://oauth2:$ACCESS_TOKEN@gitlab.mcth.fr/thomas/nix.git
     - git push gitlab_origin HEAD:main
+
+
+build::docker:
+  stage: container
+  image: local
+  dependencies:
+    - release::package
+  tags:
+    - nix
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "api"
+    - exists:
+      - ${NAME}/docker.nix
+  script:
+    - cd ${NAME}
+    -  nix-build -E 'with import <nixos-unstable {}; callPackage ./docker.nix {}'

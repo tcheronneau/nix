@@ -4,6 +4,7 @@ stages:
   - release
 
 variables:
+  GIT_CLEAN_FLAGS: none
   NAME: 
     value: ""
     description: "Package name to update and build"

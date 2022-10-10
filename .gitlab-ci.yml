@@ -60,7 +60,7 @@ release::package:
     - nix
   before_script:
     - mkdir -p ~/.ssh
-    - ssh-keyscan -t rsa gitlab.mcth.fr >> ~/.ssh/known_hosts
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
     - git config --global user.email "abott@mcth.fr"
     - git config --global user.name "Abott"

@@ -9,7 +9,7 @@ in
     extraCommands = "mkdir -m 0777 tmp";
     config = {
       Cmd = [
-        "${pkgs.jackett}/bin/jackett"
+        "${jackett}/bin/jackett"
         "--NoUpdates"
       ];
       Env = ["COMPlus_EnableDiagnostics=0"];

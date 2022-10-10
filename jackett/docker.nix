@@ -1,9 +1,9 @@
-{ callPackage, dockerTools }:
+{ callPackage, dockerTools, cacert }:
 let jackett = callPackage ./default.nix {};
 in 
   dockerTools.buildLayeredImage {
     name = "registry.mcth.fr/docker/jackett";
-    contents = [ jackett ];
+    contents = [ jackett dockerTools.caCertificates ];
     tag = "nix";
     created = "now";
     extraCommands = "mkdir -m 0777 tmp";

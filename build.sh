@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-podman image trust set -t reject default
-podman image trust set --type accept registry.mcth.fr
+podman image trust set -t accept default
 
 echo -n $CI_REGISTRY_PASSWORD | podman login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
 

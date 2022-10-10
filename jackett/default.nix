@@ -9,7 +9,7 @@
 
 buildDotnetModule rec {
   pname = "jackett";
-  version = "0.20.1853";
+  version = "0.20.2094";
 
   src = fetchFromGitHub {
     owner = pname;

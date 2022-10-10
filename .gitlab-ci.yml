@@ -66,5 +66,5 @@ release::package:
     - git config --global user.name "Abott"
     - git add ${NAME} 
     - git commit -m "Releasing new version for ${NAME} from $CI_COMMIT_SHORT_SHA [skip ci]" || echo "No changes, nothing to commit!"
-    - git remote rm origin && git remote add origin git@gitlab.com:$CI_PROJECT_PATH.git
-    - git push origin HEAD:$CI_COMMIT_REF_NAME
+    - git remote add gitlab_origin https://oauth2:$ACCESS_TOKEN@gitlab.mcth.fr/thomas/nix.git
+    - git push gitlab_origin main

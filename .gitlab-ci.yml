@@ -81,6 +81,4 @@ build::docker:
     - exists:
       - ${NAME}/docker.nix
   script:
-    - cd ${NAME}
     - nix-shell --run ./build.sh
-

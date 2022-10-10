@@ -4,6 +4,7 @@ stages:
   - release
 
 variables:
+  GIT_STRATEGY: clone
   GIT_CLEAN_FLAGS: none
   NAME: 
     value: ""

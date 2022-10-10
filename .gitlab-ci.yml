@@ -30,11 +30,11 @@ update::version:
       else
         echo "Version mismatch updating..."
         sed -i "s/version = \"${CURR_VERSION}/version = \"${VERSION}/g" ${NAME}/default.nix
-        cat ${NAME}/default.nix
       fi
   artifacts:
     paths:
       - ${NAME}/
+    expire_in: 600
 
 build::package:
   stage: build
@@ -47,7 +47,6 @@ build::package:
     - nix
   script: 
     - cd ${NAME}
-    - cat default.nix
     - nix-build -E 'with import <nixos-unstable> {}; callPackage ./default.nix {}'
 
 release::package:
@@ -62,7 +61,6 @@ release::package:
   script:
     - git config --global user.email "abott@mcth.fr"
     - git config --global user.name "Abott"
-    - cat ${NAME}/default.nix
     - git add ${NAME} 
     - git commit -m "Releasing new version for ${NAME} from $CI_COMMIT_SHORT_SHA [skip ci]" || echo "No changes, nothing to commit!"
     - git push origin main 

@@ -49,8 +49,8 @@ release::package:
   tags:
     - nix
   script:
-    - git config --global user.email "${CI_EMAIL}"
-    - git config --global user.name "${CI_USERNAME}"
+    - git config --global user.email "abott@mcth.fr"
+    - git config --global user.name "Abott"
     - git add ${NAME} 
     - git commit -m "Releasing new version for ${NAME} from $CI_COMMIT_SHORT_SHA [skip ci]" || echo "No changes, nothing to commit!"
     - git push origin master 

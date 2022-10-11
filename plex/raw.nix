@@ -12,7 +12,7 @@
 # server, and the FHS userenv and corresponding NixOS module should
 # automatically pick up the changes.
 stdenv.mkDerivation rec {
-  version = "1.26.1.5798-99a4a6ac9";
+  version = "1.29.1.6276-4a96dd5b1";
   pname = "plexmediaserver";
 
   # Fetch the source

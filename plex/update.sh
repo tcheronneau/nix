@@ -16,7 +16,7 @@ updateHash()
     fi
     hash=$(nix-prefetch-url --type sha256 $url)
     sriHash="$(nix hash to-sri --type sha256 $hash)"
-    awk -i inplace -v sriHash="$sriHash" -v n=$n '/hash =/ {if (++count == n) sub(/hash = "[a-zA-Z0-9\/+-=]*"/,"hash = \"$sriHash\""); } 1' $dirname/raw.nix
+    awk -i inplace -v sriHash="$sriHash" -v n=$n '/hash =/ {if (++count == n) sub(/hash = "[a-zA-Z0-9\/+-=]*"/,"hash = \""sriHash"\""); } 1' $dirname/raw.nix
 
 }
 

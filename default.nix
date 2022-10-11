@@ -8,6 +8,7 @@ rec {
     sonarr = callPackage ./sonarr {};
     jackett = callPackage ./jackett {};
     bazarr = callPackage ./bazarr {};
+    plex = callPackage ./plex {};
     seafile = callPackage ./seafile {};
     kubernetes = callPackage ./kubernetes {};
     docker-sonarr = callPackage ./sonarr/docker.nix {};

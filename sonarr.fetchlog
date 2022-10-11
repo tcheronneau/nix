@@ -1,0 +1,11 @@
+this derivation will be built:
+  /nix/store/al1wf9991dff6xvycl3y0wlihcr8491q-Sonarr.main.3.0.9.1549.linux.tar.gz.drv
+building '/nix/store/al1wf9991dff6xvycl3y0wlihcr8491q-Sonarr.main.3.0.9.1549.linux.tar.gz.drv'...
+
+trying https://download.sonarr.tv/v3/main/3.0.9.1549/Sonarr.main.3.0.9.1549.linux.tar.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 13.4M  100 13.4M    0     0  11.7M      0  0:00:01  0:00:01 --:--:-- 11.8M
+error: hash mismatch in fixed-output derivation '/nix/store/al1wf9991dff6xvycl3y0wlihcr8491q-Sonarr.main.3.0.9.1549.linux.tar.gz.drv':
+         specified: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+            got:    sha256-Ba1nrvnlmVkPI+OEpwShNxfNLrpxS+N7wsx3ajkcGoQ=

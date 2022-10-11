@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://download.sonarr.tv/v3/main/${version}/Sonarr.main.${version}.linux.tar.gz";
-    sha256 = "sha256-O2UvU1juO54gb9LVnEuIXhT0Ux2rEIq2WdmsoWVDh1w=";
+    sha256 = "sha256-Ba1nrvnlmVkPI+OEpwShNxfNLrpxS+N7wsx3ajkcGoQ=";
   };
 
   nativeBuildInputs = [ makeWrapper ];

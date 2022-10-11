@@ -25,18 +25,9 @@ updateVersion()
     sed -i "s/version = \"[0-9.]*\";/version = \"$1\";/g" "$dirname/default.nix"
 }
 
-currentVersion=$(cd $dirname && nix eval --raw -f ../../.. radarr.version)
 
-latestTag=$(curl https://api.github.com/repos/Radarr/Radarr/releases/latest | jq -r ".tag_name")
-latestVersion="$(expr $latestTag : 'v\(.*\)')"
+updateVersion $VERSION
 
-if [[ "$currentVersion" == "$latestVersion" ]]; then
-    echo "Radarr is up-to-date: ${currentVersion}"
-    exit 0
-fi
-
-updateVersion $latestVersion
-
-updateHash $latestVersion x64 linux
-updateHash $latestVersion arm64 linux
-updateHash $latestVersion x64 osx
+updateHash $VERSION x64 linux
+updateHash $VERSION arm64 linux
+updateHash $VERSION x64 osx

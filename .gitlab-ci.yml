@@ -30,7 +30,12 @@ update::version:
         echo "Version matched doing nothing"
       else
         echo "Version mismatch updating..."
-        sed -i "s/version = \"${CURR_VERSION}/version = \"${VERSION}/g" ${NAME}/default.nix
+        if [ -f "${NAME}/update.sh" ]
+        then 
+          ./${NAME}/update.sh
+        else
+          sed -i "s/version = \"${CURR_VERSION}/version = \"${VERSION}/g" ${NAME}/default.nix
+        fi
       fi
   artifacts:
     paths:

@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   pname = "sonarr";
-  version = "3.0.8.1507";
+  version = "3.0.9.1549";
 
   src = fetchurl {
     url = "https://download.sonarr.tv/v3/main/${version}/Sonarr.main.${version}.linux.tar.gz";

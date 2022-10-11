@@ -10,6 +10,7 @@
   (fetchNuGet { pname = "DotNet4.SocksProxy"; version = "1.4.0.1"; sha256 = "1ig2a9ism041a6qrqkxa9xhvp19yxzcadlap5i1kz97f05a2msvb"; })
   (fetchNuGet { pname = "FlareSolverrSharp"; version = "2.2.6"; sha256 = "0ls35kkmwh83xz6aw3506213p6nq1c6x7y0asa09i2nwvh1yfbpv"; })
   (fetchNuGet { pname = "FluentAssertions"; version = "6.2.0"; sha256 = "10zhr7hgzm9w0gfg0sa0h2qdlna0w7n2jl72s4j7hi6mf68px2xm"; })
+  (fetchNuGet { pname = "Microsoft.AspNetCore"; version = "2.2.0"; sha256 = "0vsv7hcsmnsgqhs67zp207n7m9ix3dbwm1p2ch3dizkcdvz235f9"; })
   (fetchNuGet { pname = "Microsoft.AspNetCore.Antiforgery"; version = "2.2.0"; sha256 = "026wjdwjx0lgccqv0xi5gxylxzgz5ifgxf25p5pqakgrhkz0a59l"; })
   (fetchNuGet { pname = "Microsoft.AspNetCore.Authentication"; version = "2.2.0"; sha256 = "0yqfzd0qq5ypmk6b9gnb1yscl75fxx9frq808cxs70ay7y7jqmgn"; })
   (fetchNuGet { pname = "Microsoft.AspNetCore.Authentication.Abstractions"; version = "2.2.0"; sha256 = "0vj7fhpk0d95nkkxz4q0rma6pb4ym96mx6nms4603y0l19h0k5yh"; })

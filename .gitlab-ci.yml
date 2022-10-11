@@ -52,8 +52,7 @@ build::package:
   tags: 
     - nix
   script: 
-    - cd ${NAME}
-    - nix-build -E 'with import <nixos-unstable> {}; callPackage ./default.nix {}'
+    - nix-build -A ${NAME}
 
 release::package:
   stage: release

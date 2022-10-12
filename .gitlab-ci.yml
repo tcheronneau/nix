@@ -74,7 +74,7 @@ release::package:
     - git clone https://oauth2:$ACCESS_TOKEN@gitlab.mcth.fr/docker/${NAME}.git docker-${NAME}
     - cd docker-${NAME}
     - |
-      if [ $(git rev-parse ${VERSION} >/dev/null 2>&1) ]
+      if ! [ $(git tag | grep ${VERSION}) ]
       then 
         git tag -a ${VERSION} -m "Update to version ${VERSION} from $CI_COMMIT_SHORT_SHA"
         git push origin ${VERSION}

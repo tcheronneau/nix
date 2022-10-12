@@ -32,7 +32,7 @@ update::version:
         echo "Version mismatch updating..."
         if [ -f "${NAME}/update.sh" ]
         then 
-          ./${NAME}/update.sh
+          ./${NAME}/update.sh || true
         else
           sed -i "s/version = \"${CURR_VERSION}/version = \"${VERSION}/g" ${NAME}/default.nix
         fi

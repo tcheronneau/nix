@@ -25,7 +25,7 @@ update::version:
   script:
     - if [ -f "${NAME}"/default.nix ]; then export CURR_VERSION=$(cat ./${NAME}/default.nix|awk -F'"' '/version =/ {print $2;} ') ; fi
     - |
-      echo "New version : ${VERSION}"
+      echo "New version : ${VERSION} for ${NAME}"
       if [ "${CURR_VERSION}" == "${VERSION}" ]
       then
         echo "Version matched doing nothing"
@@ -69,7 +69,7 @@ release::package:
     - git config --global user.name "Abott"
     - git config --global "http.${CI_SERVER_URL}.sslCAInfo" "$CI_SERVER_TLS_CA_FILE"
     - git add ${NAME} 
-    - git commit -m "Releasing new version for ${NAME} from $CI_COMMIT_SHORT_SHA [skip ci]" || echo "No changes, nothing to commit!"
+    - git commit -m "Releasing new version ${VERSION} for ${NAME} [skip ci]" || echo "No changes, nothing to commit!"
     - git remote add gitlab_origin https://oauth2:$ACCESS_TOKEN@gitlab.mcth.fr/thomas/nix.git
     - git push gitlab_origin HEAD:main
     - git clone https://oauth2:$ACCESS_TOKEN@gitlab.mcth.fr/docker/${NAME}.git docker-${NAME}

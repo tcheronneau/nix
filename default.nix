@@ -8,7 +8,7 @@ rec {
     sonarr = callPackage ./sonarr {};
     jackett = callPackage ./jackett {};
     bazarr = callPackage ./bazarr {};
-    tautulli = callPackage ./tautulli {};
+    tautulli = python3Packages.callPackage ./tautulli {};
     plex = callPackage ./plex {};
     seafile = callPackage ./seafile {};
     kubernetes = callPackage ./kubernetes {};

@@ -7,6 +7,7 @@ stages:
 variables:
   GIT_STRATEGY: clone
   GIT_CLEAN_FLAGS: none
+  NIXPKGS_ALLOW_UNFREE: 1
   NAME: 
     value: ""
     description: "Package name to update and build"

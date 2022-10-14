@@ -102,7 +102,7 @@ neovim.override {
         set background=dark " for the dark version
         " set background=light " for the light version
         "colorscheme one
-        colorscheme inkpot
+        colorscheme jellybeans 
         
         " Trigger NERDTree at startup if no file + map open shortcut
         nnoremap <silent> <C-k><C-B> :NERDTreeToggle<CR>
@@ -387,7 +387,7 @@ neovim.override {
       '';
     packages.myVimPackage = with vimPlugins; {
       # see examples below how to use custom packages
-      start = [ blamer vim-one inkpot vim-nix coc-nvim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim vim-go nerdtree syntastic cheat-sh-vim fzf-vim bufferline-nvim vim-nix vim-nixhash ];
+      start = [ blamer vim-one jellybeans-nvim vim-nix coc-nvim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim vim-go nerdtree syntastic cheat-sh-vim fzf-vim bufferline-nvim vim-nix vim-nixhash ];
       opt = [ ];
     };
   };

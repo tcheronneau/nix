@@ -1,4 +1,4 @@
-{ pkgs? import <nixpkgs-unstable> {} }:
+{ pkgs? import ./source.nix {} }:
 #{ callPackage }:
 with pkgs;
 rec {

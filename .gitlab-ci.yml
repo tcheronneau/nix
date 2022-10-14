@@ -53,6 +53,7 @@ build::package:
   tags: 
     - nix
   script: 
+    - cat ${NAME}/default.nix
     - nix-build -A ${NAME}
 
 release::package:

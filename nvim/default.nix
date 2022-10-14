@@ -42,16 +42,6 @@ let
       sha256 = "sha256-etLCmzOMi7xjYc43ZBqjPnj2gqrrSbmtcKdw6eZT8rM=";
     };
   };
-  cheat-sh-vim = vimUtils.buildVimPlugin {
-    pname = "cheat.sh-vim";
-    version = "test";
-    src = fetchFromGitHub {
-      owner = "dbeniamine";
-      repo = "cheat.sh-vim";
-      rev = "e0fe468d872025477462ac5d96432f5c1aee3a0d";
-      sha256 = "sha256-awowfQ4q9CCX2V7Vhf1EjKr2GaqQFPOpdwq7FT8os0Y=";
-    };
-  };
 in
 neovim.override {
   configure = {
@@ -100,7 +90,7 @@ neovim.override {
         
         
         set background=dark " for the dark version
-        " set background=light " for the light version
+        "set background=light " for the light version
         colorscheme one
         
         " Trigger NERDTree at startup if no file + map open shortcut
@@ -386,7 +376,7 @@ neovim.override {
       '';
     packages.myVimPackage = with vimPlugins; {
       # see examples below how to use custom packages
-      start = [ blamer vim-one coc-nvim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible ansible-vim vim-go nerdtree syntastic cheat-sh-vim fzf-vim bufferline-nvim vim-nix vim-nixhash ];
+      start = [ blamer vim-one coc-nvim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible vim-nix ansible-vim vim-go nerdtree syntastic fzf-vim bufferline-nvim vim-nix vim-nixhash ];
       opt = [ ];
     };
   };

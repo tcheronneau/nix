@@ -6,6 +6,7 @@ rec {
     scripts = callPackage ./mybash {};
     enpass = callPackage ./enpass {};
     sonarr = callPackage ./sonarr {};
+    radarr = callPackage ./radarr {};
     jackett = callPackage ./jackett {};
     bazarr = callPackage ./bazarr {};
     tautulli = python3Packages.callPackage ./tautulli {};

@@ -2,7 +2,7 @@
 #{ callPackage }:
 with pkgs;
 rec {
-    nvim = with import <nixpkgs> {}; callPackage ./nvim {};
+    nvim = callPackage ./nvim {};
     scripts = callPackage ./mybash {};
     enpass = callPackage ./enpass {};
     sonarr = callPackage ./sonarr {};

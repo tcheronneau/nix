@@ -11,24 +11,13 @@ let
       sha256 = "sha256-6Gr6/soyN5r+NRpDrFs9aT/assuQF9ydR3TfZnPlygI=";
     };
   };
-  #vim-devicons = vimUtils.buildVimPlugin {
-  #  pname = "vim-devicons";
-  #  version = "test";
-  #  src = fetchFromGitHub {
-  #    owner = "ryanoasis";
-  #    repo = "vim-devicons";
-  #    rev = "a2258658661e42dd4cdba4958805dbad1fe29ef4";
-  #    sha256 = "sha256-bS1vUKzdzUZ1RYDbYWujF2z8EOd9o01/0VqMYUaNihA=";
-  #    #sha256 = "0000000000000000000000000000000000000000000000000000";
-  #  };
-  #};
   coc-ansible = vimUtils.buildVimPlugin {
     pname = "coc-ansible";
     version = "test";
     src = fetchFromGitHub {
       owner = "yaegassy";
       repo = "coc-ansible";
-      rev = "15fdc8503925427c6810a2da0b4c0c780a0d2c75";
+      rev = "507cde4d172e1732266b4d50d2a98dfde3dc6ab9";
       sha256 = "sha256-K7XtihHksv01x9j/faKRNzWn9nI9iomFYTFyYMO5QLc=";
     };
   };

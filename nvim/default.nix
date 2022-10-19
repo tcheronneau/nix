@@ -87,11 +87,11 @@ neovim.override {
         let NERDTreeShowHidden=1
         " https://gist.github.com/avesus/1954d9384d86cc1e39cb2b2eff7017b7
         autocmd FileType nerdtree noremap <buffer> <Tab> <nop>
-        function! StartUp()                                                                                                                                                                                         
-            if 0 == argc()
-                NERDTree
-            end
-        endfunction
+        "function! StartUp()                                                                                                                                                                                         
+        "    if 0 == argc()
+        "        NERDTree
+        "    end
+        "endfunction
         
         " Term mode escape
         tnoremap <Esc> <C-\><C-n>
@@ -109,8 +109,8 @@ neovim.override {
         nnoremap <C-f> :Files<CR>
         let g:fzf_action = {
           \ 'ctrl-n': 'tab split',
-          \ 'ctrl-s': 'split',
-          \ 'ctrl-b': 'vsplit'
+          \ 'ctrl-b': 'split',
+          \ 'ctrl-v': 'vsplit'
           \}
         
         nnoremap <silent> <C-w><C-t> :sp<CR>:resize 10<CR>:Neomux<CR>

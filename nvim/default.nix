@@ -108,9 +108,9 @@ neovim.override {
         " Some FZF update for search
         nnoremap <C-f> :Files<CR>
         let g:fzf_action = {
-          \ 'ctrl-t': 'tab split',
+          \ 'ctrl-n': 'tab split',
           \ 'ctrl-s': 'split',
-          \ 'ctrl-v': 'vsplit'
+          \ 'ctrl-b': 'vsplit'
           \}
         
         nnoremap <silent> <C-w><C-t> :sp<CR>:resize 10<CR>:Neomux<CR>

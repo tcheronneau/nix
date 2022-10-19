@@ -82,17 +82,6 @@ neovim.override {
         "set background=light " for the light version
         colorscheme one
         
-        " Trigger NERDTree at startup if no file + map open shortcut
-        nnoremap <silent> <C-k><C-B> :NERDTreeToggle<CR>
-        let NERDTreeShowHidden=1
-        " https://gist.github.com/avesus/1954d9384d86cc1e39cb2b2eff7017b7
-        autocmd FileType nerdtree noremap <buffer> <Tab> <nop>
-        "function! StartUp()                                                                                                                                                                                         
-        "    if 0 == argc()
-        "        NERDTree
-        "    end
-        "endfunction
-        
         " Term mode escape
         tnoremap <Esc> <C-\><C-n>
         " save session
@@ -346,6 +335,29 @@ neovim.override {
 
         set termguicolors
         lua << EOF
+        vim.g.loaded_netrw = 1
+        vim.g.loaded_netrwPlugin = 1
+        require("nvim-tree").setup({
+          open_on_setup = true,
+          sort_by = "case_sensitive",
+          view = {
+            adaptive_size = true,
+            mappings = {
+              list = {
+                { key = "u", action = "dir_up" },
+                { key = "t", action = "tabnew"},
+                { key = "s", action = "split"},
+                { key = "v", action = "vsplit"},
+              },
+            },
+          },
+          renderer = {
+            group_empty = true,
+          },
+          filters = {
+            dotfiles = true,
+          },
+        })
         require("bufferline").setup{
           options= {
             mode = "buffers",
@@ -365,7 +377,7 @@ neovim.override {
       '';
     packages.myVimPackage = with vimPlugins; {
       # see examples below how to use custom packages
-      start = [ blamer vim-one coc-nvim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible vim-nix ansible-vim vim-go nerdtree syntastic fzf-vim bufferline-nvim vim-nix vim-nixhash ];
+      start = [ blamer vim-one coc-nvim vim-airline vim-airline-themes fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible vim-nix ansible-vim vim-go syntastic fzf-vim bufferline-nvim vim-nix vim-nixhash nvim-web-devicons nvim-tree-lua ];
       opt = [ ];
     };
   };

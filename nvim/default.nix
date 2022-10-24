@@ -18,7 +18,7 @@ let
       owner = "yaegassy";
       repo = "coc-ansible";
       rev = "507cde4d172e1732266b4d50d2a98dfde3dc6ab9";
-      sha256 = "sha256-K7XtihHksv01x9j/faKRNzWn9nI9iomFYTFyYMO5QLc=";
+      sha256 = "sha256-nFwaDcWB5zkdb9MZLdKRh7dQS5vxdQ0W7muKfPcKvwc=";
     };
   };
   blamer = vimUtils.buildVimPlugin {

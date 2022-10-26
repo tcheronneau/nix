@@ -355,7 +355,7 @@ neovim.override {
             group_empty = true,
           },
           filters = {
-            dotfiles = true,
+            dotfiles = false,
           },
         })
         require("bufferline").setup{

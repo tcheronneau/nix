@@ -357,6 +357,11 @@ neovim.override {
           filters = {
             dotfiles = false,
           },
+          git = {
+            enable = true,
+            ignore = false,
+            timeout = 500,
+          },
         })
         require("bufferline").setup{
           options= {

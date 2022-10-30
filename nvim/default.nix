@@ -18,7 +18,7 @@ let
       owner = "yaegassy";
       repo = "coc-ansible";
       rev = "507cde4d172e1732266b4d50d2a98dfde3dc6ab9";
-      sha256 = "sha256-K7XtihHksv01x9j/faKRNzWn9nI9iomFYTFyYMO5QLc=";
+      sha256 = "sha256-nFwaDcWB5zkdb9MZLdKRh7dQS5vxdQ0W7muKfPcKvwc=";
     };
   };
   blamer = vimUtils.buildVimPlugin {
@@ -34,10 +34,10 @@ let
 in
 neovim.override {
   configure = {
-    customRC = ./vimrc;
+    customRC = ./vim';
     packages.myVimPackage = with vimPlugins; {
       # see examples below how to use custom packages
-      start = [ blamer vim-one coc-nvim vim-airline vim-airline-themes vim-nerdtree-syntax-highlight nerdtree-git-plugin fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible vim-nix ansible-vim vim-go nerdtree syntastic fzf-vim bufferline-nvim vim-nix vim-nixhash ];
+      start = [ blamer vim-one coc-nvim vim-airline vim-airline-themes fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible vim-nix ansible-vim vim-go syntastic fzf-vim bufferline-nvim vim-nix vim-nixhash nvim-web-devicons nvim-tree-lua ];
       opt = [ ];
     };
   };

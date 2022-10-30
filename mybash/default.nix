@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchGit {
     url = "git@gitlab.mcth.fr:thomas/awesome-script.git";
-    rev = "481895e993eb17e60a7ba42d787a9dbaafddc453";
+    rev = "d689703ffd4b0b4db52948453c4c8724083c2482";
   };
 
   buildInputs = [
@@ -22,5 +22,6 @@ stdenv.mkDerivation rec {
     mv bash/urlencode $out/bin/
     mv bash/switchvault $out/bin/
     mv bash/cheat.sh $out/bin/
+    mv bash/reschedule.sh $out/bin/reschedule
   '';
 }

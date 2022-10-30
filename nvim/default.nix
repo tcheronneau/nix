@@ -1,5 +1,4 @@
 { fetchFromGitHub, vimUtils, neovim, vimPlugins }:
-
 let
   neomux = vimUtils.buildVimPlugin {
     pname = "neomux";

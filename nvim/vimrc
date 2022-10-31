@@ -23,6 +23,10 @@ let g:blamer_enabled = 1
 syntax enable
 filetype plugin indent on
 
+"Credit joshdick
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (empty($TMUX))
   if (has("nvim"))
     "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -30,6 +34,7 @@ if (empty($TMUX))
   endif
   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
   if (has("termguicolors"))
     set termguicolors
   endif
@@ -37,16 +42,8 @@ endif
 
 
 set background=dark " for the dark version
+"set background=light " for the light version
 colorscheme one
-
-nnoremap <silent> <C-k><C-B> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-autocmd FileType nerdtree noremap <buffer> <Tab> <nop>
-function! StartUp()
-    if 0 == argc()
-        NERDTree
-    end
-endfunction
 
 " Term mode escape
 tnoremap <Esc> <C-\><C-n>
@@ -63,30 +60,68 @@ nnoremap <C-w><C-k> :bp<CR>
 " Some FZF update for search
 nnoremap <C-f> :Files<CR>
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
+  \ 'ctrl-n': 'tab split',
+  \ 'ctrl-b': 'split',
   \ 'ctrl-v': 'vsplit'
   \}
 
 nnoremap <silent> <C-w><C-t> :sp<CR>:resize 10<CR>:Neomux<CR>
 
-autocmd VimEnter * call StartUp()
+"autocmd VimEnter * call StartUp()
 let g:chromatica#libclang_path='/usr/lib/llvm-11/lib/'
 let g:chromatica#enable_at_startup=1
 " Grep not opening file
 let g:EasyGrepOpenWindowOnMatch=0
 
 set clipboard+=unnamedplus
+"let g:clipboard = {
+"          \   'name': 'win32yank-wsl',
+"          \   'copy': {
+"          \      '+': 'win32yank.exe -i --crlf',
+"          \      '*': 'win32yank.exe -i --crlf',
+"          \    },
+"          \   'paste': {
+"          \      '+': 'win32yank.exe -o --lf',
+"          \      '*': 'win32yank.exe -o --lf',
+"          \   },
+"          \   'cache_enabled': 0,
+"          \ }
 """" COC
+" vim-prettier
+"let g:prettier#quickfix_enabled = 0
+"let g:prettier#quickfix_auto_focus = 0
+" prettier command for coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" run prettier on save
+"let g:prettier#autoformat = 0
+"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-function! IsNERDTreeOpen()
+" j/k will move virtual lines (lines that wrap)
+"noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+"noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+"set relativenumber
+
+"set smarttab
+"set cindent
+"set tabstop=2
+"set shiftwidth=2
+"" always uses spaces instead of tab characters
+"set expandtab
+"colorscheme gruvbox
+
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+function! IsNERDTreeOpen()        
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
 function! SyncTree()
   if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
     NERDTreeFind
@@ -94,13 +129,16 @@ function! SyncTree()
   endif
 endfunction
 
+" Highlight currently open buffer in NERDTree
+" autocmd BufEnter * call SyncTree()
+
 " coc config
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
-  \ 'coc-json',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
   \ 'coc-pyright',
   \ ]
 let g:coc_filetype_map = {
@@ -129,6 +167,8 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
@@ -258,6 +298,34 @@ let g:airline#extensions#tabline#enabled = 0
 
 set termguicolors
 lua << EOF
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+require("nvim-tree").setup({
+  open_on_setup = true,
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+        { key = "t", action = "tabnew"},
+        { key = "s", action = "split"},
+        { key = "v", action = "vsplit"},
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = false,
+  },
+  git = {
+    enable = true,
+    ignore = false,
+    timeout = 500,
+  },
+})
 require("bufferline").setup{
   options= {
     mode = "buffers",
@@ -272,4 +340,4 @@ require("bufferline").setup{
     separator_style = "slant"
   }
 }
-EOF
+

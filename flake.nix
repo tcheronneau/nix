@@ -20,7 +20,6 @@
       tautulli = python3Packages.callPackage ./tautulli {};
       plex = callPackage ./plex {};
       seafile = callPackage ./seafile {};
-      kubernetes = callPackage ./kubernetes {};
     };
   };
 }

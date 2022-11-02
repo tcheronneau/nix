@@ -2,13 +2,25 @@
   description = "My personal Neovim configuration";
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
-    #flake-utils.url = "github:numtide/flake-utils";
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
   };
-  outputs = { self, ... } @inputs : {
-    packages.x86_64-linux = (import ./packages.nix inputs);
+  outputs = { self, nixpkgs }:
+  let 
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+  in
+  {
+    packages.${system} = with pkgs; rec {
+      nvim = callPackage ./nvim {};
+      scripts = callPackage ./mybash {};
+      enpass = callPackage ./enpass {};
+      sonarr = callPackage ./sonarr {};
+      radarr = callPackage ./radarr {};
+      jackett = callPackage ./jackett {};
+      bazarr = callPackage ./bazarr {};
+      tautulli = python3Packages.callPackage ./tautulli {};
+      plex = callPackage ./plex {};
+      seafile = callPackage ./seafile {};
+      kubernetes = callPackage ./kubernetes {};
+    };
   };
 }

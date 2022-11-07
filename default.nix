@@ -1,4 +1,4 @@
-{ pkgs? import ./source.nix {} }:
+{ pkgs? import ./source.nix {config.allowUnfree=true;} }:
 #{ callPackage }:
 with pkgs;
 rec {

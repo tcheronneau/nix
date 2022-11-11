@@ -10,6 +10,7 @@ set ruler
 set splitbelow
 set splitright
 set number
+set mouse=
 " AIRLINE
 let g:airline_powerline_fonts = 1
 set t_Co=256

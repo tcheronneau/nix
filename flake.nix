@@ -6,13 +6,16 @@
   outputs = { self, nixpkgs }:
   let 
     system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
+    pkgs = import nixpkgs { 
+      inherit system; 
+      config.allowUnfree = true;
+    };
   in
   {
     packages.${system} = with pkgs; rec {
       nvim = callPackage ./nvim {};
       scripts = callPackage ./mybash {};
-      enpass = callPackage ./enpass { config.allowUnfree = true; };
+      enpass = callPackage ./enpass {};
       sonarr = callPackage ./sonarr {};
       radarr = callPackage ./radarr {};
       jackett = callPackage ./jackett {};

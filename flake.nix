@@ -12,7 +12,7 @@
     packages.${system} = with pkgs; rec {
       nvim = callPackage ./nvim {};
       scripts = callPackage ./mybash {};
-      enpass = callPackage ./enpass {};
+      enpass = callPackage ./enpass { config.allowUnfree = true; };
       sonarr = callPackage ./sonarr {};
       radarr = callPackage ./radarr {};
       jackett = callPackage ./jackett {};

@@ -28,6 +28,7 @@
       bazarr = callPackage ./bazarr {};
       tautulli = python3Packages.callPackage ./tautulli {};
       seafile = callPackage ./seafile {};
+      kubeshark = callPackage ./kubeshark {} ;
     };
   };
 }

@@ -15,5 +15,6 @@ rec {
     kubernetes = callPackage ./kubernetes {};
     docker-sonarr = callPackage ./sonarr/docker.nix {};
     docker-jackett = callPackage ./jackett/docker.nix {};
+    kubeshark = callPackage ./kubeshark {} ;
 }
 

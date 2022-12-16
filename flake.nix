@@ -29,6 +29,8 @@
       tautulli = python3Packages.callPackage ./tautulli {};
       seafile = callPackage ./seafile {};
       kubeshark = callPackage ./kubeshark {} ;
+      docker-sonarr = callPackage ./sonarr/docker.nix {} ;
+      docker-radarr = callPackage ./radarr/docker.nix {} ;
     };
   };
 }

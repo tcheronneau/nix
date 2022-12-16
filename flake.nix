@@ -9,6 +9,11 @@
     pkgs = import nixpkgs { 
       inherit system; 
       config.allowUnfree = true;
+      overlays = [
+        (final: prev: {
+          plexRaw = final.callPackage ./plex/raw.nix {};
+        })
+      ];
     };
   in
   {
@@ -18,12 +23,15 @@
       enpass = callPackage ./enpass {};
       sonarr = callPackage ./sonarr {};
       radarr = callPackage ./radarr {};
+      plex = callPackage ./plex {};
       jackett = callPackage ./jackett {};
       docker-jackett = callPackage ./jackett/docker.nix {} ;
       bazarr = callPackage ./bazarr {};
       tautulli = python3Packages.callPackage ./tautulli {};
-      plex = callPackage ./plex {};
       seafile = callPackage ./seafile {};
+      kubeshark = callPackage ./kubeshark {} ;
+      docker-sonarr = callPackage ./sonarr/docker.nix {} ;
+      docker-radarr = callPackage ./radarr/docker.nix {} ;
     };
   };
 }

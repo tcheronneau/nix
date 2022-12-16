@@ -1,7 +1,9 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p curl gnused nix-prefetch gawk stdenv
+#!nix-shell -i bash -p curl gnused nix-prefetch gawk stdenv jq
 dirname=$(dirname "$0")
-version=${VERSION}
+token=$(cat ${dirname}/.token)
+version=$(curl -H "X-Plex-Token:${token}" -s https://plex.tv/api/downloads/5.json?channel=plexpass|jq -r '.computer.Linux.version')
+#version=${VERSION}
 
 updateHash()
 {
@@ -21,6 +23,6 @@ updateHash()
 }
 
 
-updateHash $VERSION arm64
-updateHash $VERSION x64
+updateHash $version arm64
+updateHash $version x64
 sed -i "s/version = \"[0-9a-z.-]*\";/version = \"$version\";/g" "$dirname/raw.nix"

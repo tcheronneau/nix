@@ -19,6 +19,7 @@
       sonarr = callPackage ./sonarr {};
       radarr = callPackage ./radarr {};
       jackett = callPackage ./jackett {};
+      docker-jackett = callPackage ./jackett/docker.nix {} ;
       bazarr = callPackage ./bazarr {};
       tautulli = python3Packages.callPackage ./tautulli {};
       plex = callPackage ./plex {};

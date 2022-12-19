@@ -19,15 +19,20 @@ do
   echo "------------------------------"
   echo ""
   VERSION=$(./${SOFT}/update.sh|awk '/VERSION/ {print $2;}')
-  if [ -f "${SOFT}/docker.nix" ]
-  then 
-    echo "Building docker for ${SOFT} on version: ${VERSION}"
-    nix build .\#docker-${SOFT}
-    docker load < $(readlink ./result)
-    docker tag mcth/${SOFT}:nix mcth/${SOFT}:latest
-    docker tag mcth/${SOFT}:nix mcth/${SOFT}:${VERSION}
-    docker push mcth/${SOFT}
-    docker push mcth/${SOFT}:${VERSION}
+  if [[ `git status --porcelain` ]]
+  then
+    if [ -f "${SOFT}/docker.nix" ]
+    then 
+      echo "Building docker for ${SOFT} on version: ${VERSION}"
+      nix build .\#docker-${SOFT}
+      docker load < $(readlink ./result)
+      docker tag mcth/${SOFT}:nix mcth/${SOFT}:latest
+      docker tag mcth/${SOFT}:nix mcth/${SOFT}:${VERSION}
+      docker push mcth/${SOFT}
+      docker push mcth/${SOFT}:${VERSION}
+      git commit -am "Update ${SOFT} with new version : ${VERSION}"
+      git push
+    fi
   fi
 done
 echo "##############################"

@@ -13,10 +13,13 @@ do
   echo ""
   echo "------------------------------"
   echo ""
-  ./${SOFT}/update.sh
+  VERSION=$(./${SOFT}/update.sh|awk '/VERSION/ {print $2;}')
   if [ -f "${SOFT}/docker.nix" ]
   then 
-    podman load <$(nix build .\#docker-${SOFT})
+    nix build .\#docker-${SOFT}
+    docker load < $(readlink ./result)
+    docker tag mcth/${SOFT}:nix mcth/${SOFT}:latest
+    docker tag mcth/${SOFT}:nix mcth/${SOFT}:${VERSION}
   fi
 done
 echo "##############################"

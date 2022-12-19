@@ -33,3 +33,4 @@ updateVersion $VERSION
 updateHash $VERSION x64 linux
 updateHash $VERSION arm64 linux
 updateHash $VERSION x64 osx
+echo "VERSION $VERSION"

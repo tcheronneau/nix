@@ -1,7 +1,12 @@
 #!/usr/bin/env nix-shell 
 #!nix-shell -i bash 
 
-SOFTS=( "plex" "sonarr" "radarr" )
+if [ -z $1 ]
+then
+  SOFTS=( "plex" "sonarr" "radarr" )
+else
+  SOFTS=$1
+fi
 
 echo "##############################"
 echo "Checking updates on : ${SOFTS[@]}"
@@ -13,10 +18,16 @@ do
   echo ""
   echo "------------------------------"
   echo ""
-  ./${SOFT}/update.sh
+  VERSION=$(./${SOFT}/update.sh)
   if [ -f "${SOFT}/docker.nix" ]
   then 
-    podman load <$(nix build .\#docker-${SOFT})
+    echo "Building docker for ${SOFT} on version: ${VERSION}"
+    nix build .\#docker-${SOFT} 
+    docker load <$(readlink ./result)
+    docker tag mcth/${SOFT}:nix mcth/${SOFT}:latest
+    docker tag mcth/${SOFT}:nix mcth/${SOFT}:${VERSION}
+    docker push mcth/${SOFT}
+    docker push mcth/${SOFT}:${VERSION}
   fi
 done
 echo "##############################"

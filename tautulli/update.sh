@@ -4,7 +4,7 @@ dirname=$(dirname "$0")
 LAST=$(curl -s https://api.github.com/repos/tautulli/tautulli/tags|jq -r '.[0].name'|sed "s/v//g")
 version=${VERSION:-$LAST}
 update-source-version tautulli "${version//v}"
-echo ${version}
+echo "VERSION ${version}"
 #url="https://github.com/Tautulli/Tautulli/archive/refs/tags/v${version}.tar.gz"
 #
 #hash=$(nix-prefetch-url --type sha256 $url)

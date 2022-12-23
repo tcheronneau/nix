@@ -32,6 +32,7 @@
       kubeshark = callPackage ./kubeshark {} ;
       docker-sonarr = callPackage ./sonarr/docker.nix {} ;
       docker-radarr = callPackage ./radarr/docker.nix {} ;
+      docker-tautulli = callPackage ./tautulli/docker.nix {} ;
     };
   };
 }

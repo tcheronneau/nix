@@ -1,5 +1,5 @@
 { pkgs }:
-let tautulli = pkgs.callPackage ./default.nix {};
+let tautulli = pkgs.python3Packages.callPackage ./default.nix {};
 in 
   pkgs.dockerTools.buildLayeredImage {
     name = "mcth/tautulli";

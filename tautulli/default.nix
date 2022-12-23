@@ -12,7 +12,7 @@ buildPythonApplication rec {
     owner = "Tautulli";
     repo = pname;
     rev = "v${version}";
-    sha256 = "sha256-AtoY38OPhTUTnkFhdQm4VE3/scU329WNjlCeU+KhVls=";
+    sha256 = "sha256-9hWTnBi8t3ZJzrDvvViQ/jYDdbNCabVAion9E9sjqRQ=";
   };
 
   installPhase = ''

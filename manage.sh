@@ -3,7 +3,7 @@
 
 if [ -z $1 ]
 then
-  SOFTS=( "plex" "sonarr" "radarr" "tautulli" )
+  SOFTS=( "plex" "sonarr" "radarr" "tautulli" "jackett" )
 else
   SOFTS=$1
 fi

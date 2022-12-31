@@ -2,7 +2,7 @@
 let jackett = callPackage ./default.nix {};
 in 
   dockerTools.buildLayeredImage {
-    name = "registry.mcth.fr/docker/jackett";
+    name = "mcth/jackett";
     contents = [ jackett dockerTools.caCertificates ];
     tag = "nix";
     created = "now";

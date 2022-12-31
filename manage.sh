@@ -12,6 +12,7 @@ echo "##############################"
 echo "Checking updates on : ${SOFTS[@]}"
 echo "##############################"
 
+NS="media"
 for SOFT in ${SOFTS[@]}
 do 
   echo "Checking update on ${SOFT}"
@@ -30,6 +31,7 @@ do
       docker tag mcth/${SOFT}:nix mcth/${SOFT}:${VERSION}
       docker push mcth/${SOFT}
       docker push mcth/${SOFT}:${VERSION}
+      kubectl set image "deploy/${SOFT}" -n "${NS}" "${SOFT}=mcth/${SOFT}:${VERSION:-latest}"
       git commit -am "Update ${SOFT} with new version : ${VERSION}"
       git push
     fi

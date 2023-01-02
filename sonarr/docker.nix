@@ -9,7 +9,7 @@ in
     config = {
       Cmd = [
         "${sonarr}/bin/NzbDrone"
-        "-no-browser" "-data=/config"
+        "-nobrowser" "-data=/config"
       ];
       ExposedPorts = {
         "8989/tcp" = { };

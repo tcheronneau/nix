@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p curl gnused nix-prefetch gawk common-updater-scripts
+#!nix-shell -i bash -p curl gnused nix-prefetch gawk common-updater-scripts jq
 dirname=$(dirname "$0")
 LAST=$(curl -s https://api.github.com/repos/tautulli/tautulli/tags|jq -r '.[0].name'|sed "s/v//g")
 version=${VERSION:-$LAST}

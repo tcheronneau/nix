@@ -9,17 +9,17 @@ let
   }."${stdenv.hostPlatform.system}" or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
   hash = {
-    x64-linux_hash = "sha256-s1bfrJUiEVxZqBGQj6YL+SPqxI2xIrP53IpoVZKsONo=";
-    arm64-linux_hash = "sha256-KeeVRdIxQmjPpp3cIdJa/1+Dd8Vbbbd6SXxEWXXDUtU=";
-    x64-osx_hash = "sha256-OwQhNHRYfV4/3W1H7rGd3p4P4BlCCqtqlAUP1qv02y8=";
+    x64-linux_hash = "sha256-7OZoHvDJIBXogUPHdKphiajtCBOOouSPe/pgZF30tS8=";
+    arm64-linux_hash = "sha256-OqTiriXOwU68kRAA1U+HZLy062Atykld5aow56Ec03s=";
+    x64-osx_hash = "sha256-dydjoRMPsb+H/nr0ZPUlv/Yec+Brz76DaJfUHvfLGfI=";
   }."${arch}-${os}_hash";
 
 in stdenv.mkDerivation rec {
   pname = "radarr";
-  version = "4.3.1.6822";
+  version = "4.3.2.6857";
 
   src = fetchurl {
-    url = "https://github.com/Radarr/Radarr/releases/download/v${version}/Radarr.develop.${version}.${os}-core-${arch}.tar.gz";
+    url = "https://github.com/Radarr/Radarr/releases/download/v${version}/Radarr.master.${version}.${os}-core-${arch}.tar.gz";
     sha256 = hash;
   };
 

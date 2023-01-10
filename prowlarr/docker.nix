@@ -3,7 +3,7 @@ let prowlarr = pkgs.callPackage ./default.nix {};
 in 
   pkgs.dockerTools.buildLayeredImage {
     name = "mcth/prowlarr";
-    contents = [ prowlarr ];
+    contents = [ prowlarr pkgs.cacert ];
     tag = "nix";
     created = "now";
     config = {

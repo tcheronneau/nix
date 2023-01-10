@@ -1,6 +1,6 @@
-{ lib, fetchFromGitHub, buildPythonPackage, python310, wrapPython, makeWrapper, chromedriver, chromium }:
+{ lib, fetchFromGitHub, buildPythonPackage, python3, wrapPython, makeWrapper, chromedriver, chromium }:
 let 
-  pydep = with python310.pkgs; [
+  pydep = with python3.pkgs; [
     bottle
     waitress
     selenium
@@ -9,15 +9,20 @@ let
     websockets
     xvfbwrapper
   ];
+  pyinput = [ 
+    pydep 
+    chromium
+    chromedriver
+  ];
 in 
 buildPythonPackage rec {
   pname = "FlareSolverr";
   version = "3.0.2";
   format = "other";
 
-  pythonPath = [ python310 ];
+  pythonPath = [ python3 ];
   nativeBuildInputs = [ wrapPython makeWrapper ];
-  propagatedBuildInputs = [ python310 pydep chromium chromedriver ];
+  propagatedBuildInputs = pyinput; 
 
   src = fetchFromGitHub {
     owner = "FlareSolverr";
@@ -25,7 +30,6 @@ buildPythonPackage rec {
     rev = "v${version}";
     sha256 = "sha256-zpeJf1CaQ4bsncZz44sH+tFKddYrZf7YdNYL50d9GA4=";
   };
-  dontUseSetuptoolsCheck = true;
 
   installPhase = ''
     runHook preInstall
@@ -33,7 +37,9 @@ buildPythonPackage rec {
     cp -r . $out/src
     chmod +x $out/src/src/flaresolverr.py
     makeWrapper $out/src/src/flaresolverr.py $out/bin/flaresolverr \
-      --prefix PYTHONPATH : "$PYTHONPATH"
+      --prefix PYTHONPATH : "$PYTHONPATH" --prefix PATH : ${lib.makeBinPath [chromium chromedriver]}
+    wrapPythonProgramsIn "$out/bin/flaresolverr" "$pythonPath"
+
     runHook postInstall
   '';
 

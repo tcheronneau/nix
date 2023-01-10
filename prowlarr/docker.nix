@@ -7,6 +7,10 @@ in
     tag = "nix";
     created = "now";
     config = {
+      Cmd = [
+        "${prowlarr}/bin/Prowlarr"
+        "-nobrowser" "-data=/config"
+      ];
       ExposedPorts = {
         "9696/tcp" = { };
       };

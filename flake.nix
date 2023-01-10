@@ -26,11 +26,13 @@
       plex = callPackage ./plex {};
       jackett = callPackage ./jackett {};
       bazarr = callPackage ./bazarr {};
+      prowlarr = callPackage ./prowlarr {};
       ombi = callPackage ./ombi {};
       tautulli = python3Packages.callPackage ./tautulli {};
       seafile = callPackage ./seafile {};
       kubeshark = callPackage ./kubeshark {} ;
       docker-sonarr = callPackage ./sonarr/docker.nix {} ;
+      docker-prowlarr = callPackage ./prowlarr/docker.nix {} ;
       docker-jackett = callPackage ./jackett/docker.nix {} ;
       docker-radarr = callPackage ./radarr/docker.nix {} ;
       docker-tautulli = callPackage ./tautulli/docker.nix {} ;

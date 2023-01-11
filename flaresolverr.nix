@@ -1,4 +1,4 @@
-{ lib, fetchFromGitHub, buildPythonPackage, python3, wrapPython, makeWrapper, chromedriver, chromium }:
+{ lib, fetchFromGitHub, buildPythonPackage, python3, wrapPython, makeWrapper, chromedriver, chromium, xvfb-run }:
 let 
   pydep = with python3.pkgs; [
     bottle
@@ -14,6 +14,11 @@ let
     chromium
     chromedriver
   ];
+  extrainputs = [
+    chromium
+    chromedriver
+    xvfb-run
+  ];
 in 
 buildPythonPackage rec {
   pname = "FlareSolverr";
@@ -21,8 +26,8 @@ buildPythonPackage rec {
   format = "other";
 
   pythonPath = [ python3 ];
-  nativeBuildInputs = [ wrapPython makeWrapper ];
-  propagatedBuildInputs = pyinput; 
+  nativeBuildInputs = [ wrapPython makeWrapper ] ++ extrainputs ;
+  propagatedBuildInputs = pyinput ++ extrainputs; 
 
   src = fetchFromGitHub {
     owner = "FlareSolverr";
@@ -35,10 +40,10 @@ buildPythonPackage rec {
     runHook preInstall
     mkdir -p $out/src
     cp -r . $out/src
-    chmod +x $out/src/src/flaresolverr.py
-    makeWrapper $out/src/src/flaresolverr.py $out/bin/flaresolverr \
-      --prefix PYTHONPATH : "$PYTHONPATH" --prefix PATH : ${lib.makeBinPath [chromium chromedriver]}
-    wrapPythonProgramsIn "$out/bin/flaresolverr" "$pythonPath"
+    echo "${python3}/bin/python $out/src/src/flaresolverr.py" > $out/src/flare
+    chmod +x $out/src/flare
+    makeWrapper $out/src/flare $out/bin/flaresolverr \
+      --prefix PYTHONPATH : "$PYTHONPATH" --prefix PATH : ${lib.makeBinPath [chromium chromedriver xvfb-run]}
 
     runHook postInstall
   '';

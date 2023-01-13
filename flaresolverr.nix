@@ -40,9 +40,9 @@ buildPythonPackage rec {
     runHook preInstall
     mkdir -p $out/src
     cp -r . $out/src
-    echo "${python3}/bin/python $out/src/src/flaresolverr.py" > $out/src/flare
-    chmod +x $out/src/flare
-    makeWrapper $out/src/flare $out/bin/flaresolverr \
+    #echo "${python3}/bin/python $out/src/src/flaresolverr.py" > $out/src/flare
+    #chmod +x $out/src/flare
+    makeWrapper "${python3}/bin/python" $out/bin/flaresolverr.py \
       --prefix PYTHONPATH : "$PYTHONPATH" --prefix PATH : ${lib.makeBinPath [chromium chromedriver xvfb-run]}
 
     runHook postInstall

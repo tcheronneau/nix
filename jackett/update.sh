@@ -8,6 +8,6 @@ VERSION=${VERSION:-$LAST}
 deps_file="$(realpath "./deps.nix")"
 
 cd ..
+echo "VERSION ${VERSION}"
 update-source-version jackett "${VERSION//v}"
 $(nix-build -A jackett.fetch-deps --no-out-link) "$deps_file"
-echo "VERSION ${VERSION}"

@@ -32,6 +32,7 @@
       tautulli = python3Packages.callPackage ./tautulli {};
       seafile = callPackage ./seafile {};
       kubeshark = callPackage ./kubeshark {} ;
+      aiac = callPackage ./aiac {} ;
       docker-sonarr = callPackage ./sonarr/docker.nix {} ;
       docker-prowlarr = callPackage ./prowlarr/docker.nix {} ;
       docker-jackett = callPackage ./jackett/docker.nix {} ;

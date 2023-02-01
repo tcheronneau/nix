@@ -33,6 +33,7 @@
       seafile = callPackage ./seafile {};
       kubeshark = callPackage ./kubeshark {} ;
       aiac = callPackage ./aiac {} ;
+      gitops = callPackage ./gitops.nix {} ;
       docker-sonarr = callPackage ./sonarr/docker.nix {} ;
       docker-prowlarr = callPackage ./prowlarr/docker.nix {} ;
       docker-jackett = callPackage ./jackett/docker.nix {} ;

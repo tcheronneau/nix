@@ -18,7 +18,7 @@ in
   pkgs.dockerTools.buildLayeredImage {
     name = "mcth/radarr";
     fromImage = base;
-    contents = [ pkgs.cacert pkgs.coreutils pkgs.bash ];
+    contents = [ pkgs.cacert ];
     tag = "nix";
     created = "now";
     config = {

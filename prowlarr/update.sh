@@ -34,9 +34,9 @@ updateVersion()
 # split(".") | map(tonumber))" incantation is to sort the version
 # number properly and not as a string).
 
-# latestTag=$(curl https://api.github.com/repos/Prowlarr/Prowlarr/releases/latest | jq -r ".tag_name")
+latestTag=$(curl https://api.github.com/repos/Prowlarr/Prowlarr/releases/latest | jq -r ".name")
 # latestVersion="$(expr $latestTag : 'v\(.*\)')"
-latestVersion=$(curl https://api.github.com/repos/Prowlarr/Prowlarr/git/refs/tags | jq '. | map(.ref | sub("refs/tags/v";"")) | sort_by(. | split(".") | map(tonumber)) | .[-1]' -r)
+#latestVersion=$(curl https://api.github.com/repos/Prowlarr/Prowlarr/git/refs/tags | jq '. | map(.ref | sub("refs/tags/v";"")) | sort_by(. | split(".") | map(tonumber)) | .[-1]' -r)
 
 #if [[ "$currentVersion" == "$latestVersion" ]]; then
 #    echo "Prowlarr is up-to-date: ${currentVersion}"

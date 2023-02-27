@@ -9,9 +9,9 @@ let
   }."${stdenv.hostPlatform.system}" or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
   hash = {
-    x64-linux_hash = "sha256-7OZoHvDJIBXogUPHdKphiajtCBOOouSPe/pgZF30tS8=";
-    arm64-linux_hash = "sha256-OqTiriXOwU68kRAA1U+HZLy062Atykld5aow56Ec03s=";
-    x64-osx_hash = "sha256-dydjoRMPsb+H/nr0ZPUlv/Yec+Brz76DaJfUHvfLGfI=";
+    x64-linux_hash = "sha256-DVVBJC7gGjlF9S3KI0+9kh4EzDEoWsC2jJxD8khbN2c=";
+    arm64-linux_hash = "sha256-9FDrEt3ClinbEDV3vhNaTqrDuksRGAAJGZb070l7R0w=";
+    x64-osx_hash = "sha256-suHX2G4MiXY9aa7U7AWJG7sz9KSO3refQNJBpDZdWiE=";
   }."${arch}-${os}_hash";
 
 in stdenv.mkDerivation rec {

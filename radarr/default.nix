@@ -19,7 +19,7 @@ in stdenv.mkDerivation rec {
   version = "4.4.2.6956";
 
   src = fetchurl {
-    url = "https://github.com/Radarr/Radarr/releases/download/v${version}/Radarr.master.${version}.${os}-core-${arch}.tar.gz";
+    url = "https://github.com/Radarr/Radarr/releases/download/v${version}/Radarr.develop.${version}.${os}-core-${arch}.tar.gz";
     sha256 = hash;
   };
 

@@ -37,7 +37,7 @@ neovim.override {
     customRC = vimrc; 
     packages.myVimPackage = with vimPlugins; {
       # see examples below how to use custom packages
-      start = [ blamer vim-one coc-nvim vim-airline vim-airline-themes fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible vim-nix ansible-vim vim-go syntastic fzf-vim bufferline-nvim vim-nix vim-nixhash nvim-web-devicons nvim-tree-lua ];
+      start = [ blamer vim-one coc-nvim vim-airline vim-airline-themes fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible vim-nix ansible-vim vim-go syntastic fzf-vim bufferline-nvim vim-nix vim-nixhash nvim-web-devicons nvim-tree-lua coc-rust-analyzer ];
       opt = [ ];
     };
   };

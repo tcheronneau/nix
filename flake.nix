@@ -27,6 +27,7 @@
       jackett = callPackage ./jackett {};
       bazarr = callPackage ./bazarr {};
       flaresolverr = python3Packages.callPackage ./flaresolverr.nix {};
+      magic-wormhole-transit = python3Packages.callPackage ./magic-wormhole-transit.nix {};
       prowlarr = callPackage ./prowlarr {};
       ombi = callPackage ./ombi {};
       tautulli = python3Packages.callPackage ./tautulli {};

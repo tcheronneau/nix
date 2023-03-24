@@ -1,4 +1,5 @@
-DIR=$(basename -- "$0";)
+DIR=${BASH_SOURCE}
+
 echo $DIR
 if [ -z $1 ]
 then

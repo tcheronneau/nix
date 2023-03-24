@@ -1,4 +1,4 @@
-DIR=${BASH_SOURCE}
+DIR=$(dirname ${BASH_SOURCE})
 
 echo $DIR
 if [ -z $1 ]
@@ -20,7 +20,7 @@ do
   echo "------------------------------"
   echo ""
   VERSION=$(${DIR}/${SOFT}/update.sh|awk '/VERSION/ {print $2;}')
-  if [[ `git status --porcelain` ]]
+  if [[ `git -C ${DIR} status --porcelain` ]]
   then
     if [ -f "${SOFT}/docker.nix" ]
     then 
@@ -33,8 +33,8 @@ do
       docker push mcth/${SOFT}:${VERSION}
       kubectl set image "deploy/${SOFT}" -n "${NS}" "${SOFT}=mcth/${SOFT}:${VERSION:-latest}"
     fi
-    git commit -am "Update ${SOFT} with new version : ${VERSION}"
-    git push
+    git -C $DIR commit -am "Update ${SOFT} with new version : ${VERSION}"
+    git -C $DIR push
   fi
 done
 #echo "##############################"

@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell 
-#!nix-shell -i bash 
+#!nix-shell -i bash -p docker
 
 if [ -z $1 ]
 then

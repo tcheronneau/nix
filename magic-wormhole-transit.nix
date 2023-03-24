@@ -11,20 +11,21 @@ buildPythonPackage rec {
   pname = "magic-wormhole-transit-relay";
   version = "0.2.1";
 
-  src = fetchPypi {
-    inherit pname version;
-    sha256 = "0ppsx2s1ysikns1h053x67z2zmficbn3y3kf52bzzslhd2s02j6b";
-  };
+  src = /home/thomas/Projects/github/magic-wormhole-transit-relay;
+  #src = fetchPypi {
+  #  inherit pname version;
+  #  sha256 = "0ppsx2s1ysikns1h053x67z2zmficbn3y3kf52bzzslhd2s02j6b";
+  #};
 
   propagatedBuildInputs = [ autobahn twisted ];
+  installPhase = ''
+    runHook preInstall
+    mkdir -p $out
+    ${python3}/bin/python setup.py install --root=$out
+    runHook postInstall
+  '';
 
   checkInputs = [ mock twisted ];
-  installPhase = ''
-    mkdir -p $out/src
-    ${python3}/bin/python --install-dir /build setup.py install 
-      
-
-  '';
 
   doCheck = false;
   #checkPhase = ''

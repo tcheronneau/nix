@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell 
-#!nix-shell -i bash -p git gawk gnused kubectl 
+#!nix-shell -i bash -p git gawk gnused kubectl curl
 DIR=$(dirname ${BASH_SOURCE[0]})
 cd $DIR
 
@@ -37,6 +37,7 @@ do
       kubectl set image "deploy/${SOFT}" -n "${NS}" "${SOFT}=mcth/${SOFT}:${VERSION:-latest}"
     fi
     git -C $DIR commit -am "Update ${SOFT} with new version : ${VERSION}"
+    curl -XPOST -H 'Content-Type: application/json' https://webhook.mcth.eu/gitlab -d "{'project': {'name': '${SOFT}'}, 'message': '${VERSION}'}"
     git -C $DIR push
   fi
 done

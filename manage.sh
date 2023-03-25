@@ -1,6 +1,6 @@
 #!/usr/bin/env nix-shell 
 #!nix-shell -i bash -p git gawk gnused kubectl 
-DIR=$(dirname ${BASH_SOURCE})
+DIR=$(dirname ${BASH_SOURCE[0]})
 
 echo $DIR
 if [ -z $1 ]

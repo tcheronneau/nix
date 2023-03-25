@@ -1,6 +1,8 @@
 #!/usr/bin/env nix-shell 
 #!nix-shell -i bash -p git gawk gnused kubectl 
-DIR=$(dirname ${BASH_SOURCE[0]})
+#DIR=$(dirname ${BASH_SOURCE[0]})
+SCRIPT_PATH=`readlink -f "$0"`
+DIR=`dirname "$SCRIPT_PATH"`
 
 echo $DIR
 if [ -z $1 ]

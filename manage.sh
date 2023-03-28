@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell 
-#!nix-shell -i bash -p git gawk gnused kubectl curl
+#!nix-shell -i bash -p git gawk gnused kubectl curl docker openssh
 DIR=$(dirname ${BASH_SOURCE[0]})
 cd $DIR
 

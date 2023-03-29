@@ -6,7 +6,12 @@
   outputs = { self, nixpkgs }:
   let 
     system = "x86_64-linux";
-    arm = "armv7l-hf-multiplatform";
+    armpkgs = import nixpkgs {
+      inherit system;
+      crossSystem = {
+        config = "armv7l-linux";
+      };
+    };
     pkgs = import nixpkgs { 
       inherit system; 
       config.allowUnfree = true;
@@ -27,7 +32,8 @@
       plex = callPackage ./plex {};
       jackett = callPackage ./jackett {};
       bazarr = callPackage ./bazarr {};
-      arm-sonarr = pkgs.pkgsCross.${arm}.callPackage ./sonarr {};
+      #arm-sonarr = pkgs.pkgsCross.${arm}.callPackage ./sonarr {};
+      arm-sonarr = armpkgs.callPackage ./sonarr {};
       flaresolverr = python3Packages.callPackage ./flaresolverr.nix {};
       magic-wormhole-transit = python3Packages.callPackage ./magic-wormhole-transit.nix {};
       prowlarr = callPackage ./prowlarr {};

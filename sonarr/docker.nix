@@ -1,8 +1,15 @@
-{ pkgs }:
-let sonarr = pkgs.callPackage ./default.nix {};
+{ 
+  callPackage
+, lib
+, dockerTools
+, docker-base-debug
+, docker-base-latest
+}:
+let sonarr = callPackage ./default.nix {};
 in 
-  pkgs.dockerTools.buildLayeredImage {
+  dockerTools.buildLayeredImage {
     name = "mcth/sonarr";
+    #fromImage = docker-base-latest; 
     contents = [ sonarr ];
     tag = "nix";
     created = "now";

@@ -41,11 +41,11 @@
       tautulli = python3Packages.callPackage ./tautulli {};
       seafile = callPackage ./seafile {};
       kubeshark = callPackage ./kubeshark {} ;
-      docker-base = callPackage ./docker {} ;
+      docker-base-latest = callPackage ./docker {} ;
       docker-base-debug = callPackage ./docker/debug.nix {} ;
       aiac = callPackage ./aiac {} ;
       gitops = callPackage ./gitops.nix {} ;
-      docker-sonarr = callPackage ./sonarr/docker.nix {} ;
+      docker-sonarr = callPackage ./sonarr/docker.nix { inherit docker-base-latest docker-base-debug ; } ;
       docker-prowlarr = callPackage ./prowlarr/docker.nix {} ;
       docker-jackett = callPackage ./jackett/docker.nix {} ;
       docker-radarr = callPackage ./radarr/docker.nix {} ;

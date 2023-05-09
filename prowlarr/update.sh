@@ -13,7 +13,7 @@ updateHash()
 
     hashKey="${arch}-${os}_hash"
 
-    url="https://github.com/Prowlarr/Prowlarr/releases/download/v$version/Prowlarr.master.$version.$os-core-$arch.tar.gz"
+    url="https://github.com/Prowlarr/Prowlarr/releases/download/v$version/Prowlarr.develop.$version.$os-core-$arch.tar.gz"
     hash=$(nix-prefetch-url --type sha256 $url)
     sriHash="$(nix hash to-sri --type sha256 $hash)"
 
@@ -34,7 +34,8 @@ updateVersion()
 # split(".") | map(tonumber))" incantation is to sort the version
 # number properly and not as a string).
 
-latestVersion=$(curl https://api.github.com/repos/Prowlarr/Prowlarr/releases/latest | jq -r ".name")
+#latestVersion=$(curl https://api.github.com/repos/Prowlarr/Prowlarr/releases/latest | jq -r ".name")
+latestVersion=$(curl -s https://api.github.com/repos/Prowlarr/Prowlarr/tags | jq -r '.[0].name'|sed "s/v//g")
 # latestVersion="$(expr $latestTag : 'v\(.*\)')"
 #latestVersion=$(curl https://api.github.com/repos/Prowlarr/Prowlarr/git/refs/tags | jq '. | map(.ref | sub("refs/tags/v";"")) | sort_by(. | split(".") | map(tonumber)) | .[-1]' -r)
 

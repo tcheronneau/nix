@@ -17,22 +17,22 @@ let
 
   hash = {
 <<<<<<< HEAD
-    x64-linux_hash = "sha256-GbEQuTKCVfLd0oZbPKbVVbgGMi+eooBpc9zL2k/L3zY=";
-    arm64-linux_hash = "sha256-s2TP8t+87ZQka9q0AQBfxpBwryx/qNqXfxYojvJEaAU=";
-    x64-osx_hash = "sha256-nhWyAlc7vuM2c66lJ2e2sXFZlw7vWL9cKiDNrUS6LEs=";
+    x64-linux_hash = "sha256-tz8XFhSTMRVUx8H2XhF3fXapbe+uctkanTENax0XAFQ=";
+    arm64-linux_hash = "sha256-jeadBEp6SUKzTGMNdpXLkUe1Vup1V50ektgvYZUWglQ=";
+    x64-osx_hash = "sha256-Mw1IgV1Lh1yISTcV3fVvs7CPzwO02nDMb9myVtloO1k=";
 =======
-    x64-linux_hash = "sha256-LE1tfZIULPooIuk4thFpkH+Arw9jpaAk2Wf7EthsMQs=";
-    arm64-linux_hash = "sha256-FsCzP5L0XT+ZJTlxIrjV9X3z7IbV8TH9hBFc2AnEAtc=";
-    x64-osx_hash = "sha256-XgtQ+4r/5jsXxULHe0e3T1vWTNIPEOMhk0xBscJjywQ=";
+    x64-linux_hash = "sha256-tz8XFhSTMRVUx8H2XhF3fXapbe+uctkanTENax0XAFQ=";
+    arm64-linux_hash = "sha256-jeadBEp6SUKzTGMNdpXLkUe1Vup1V50ektgvYZUWglQ=";
+    x64-osx_hash = "sha256-Mw1IgV1Lh1yISTcV3fVvs7CPzwO02nDMb9myVtloO1k=";
 >>>>>>> 2ec4412f122400d411c3fc78ddc8b9688ee80803
   }."${arch}-${os}_hash";
 
 in stdenv.mkDerivation rec {
   pname = "prowlarr";
 <<<<<<< HEAD
-  version = "1.4.1.3258";
+  version = "1.5.0.3300";
 =======
-  version = "1.4.0.3230";
+  version = "1.5.0.3300";
 >>>>>>> 2ec4412f122400d411c3fc78ddc8b9688ee80803
 
   src = fetchurl {

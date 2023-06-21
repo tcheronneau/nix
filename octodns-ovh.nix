@@ -9,20 +9,25 @@
 , python-dateutil
 , setuptools
 , six
+, ovh
+, python3Packages
 }:
 
+let
+  octodns = python3Packages.callPackage ./octodns.nix {};
+in
 
 buildPythonApplication rec {
-  pname = "octodns";
-  version = "1.0.0rc0";
+  pname = "octodns-ovh";
+  version = "0.0.2";
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "sha256-ohpvKTO+v+rl1fJf5rPAMnqzpkKC2A4fiR5tylhSiJ8=";
+    sha256 = "sha256-0hwJHn4m70Rh0e2XNxVpAUBwQwuWkzG5qApPYhTW3dg=";
   };
   doCheck = false;
 
-  propagatedBuildInputs = [ pyyaml dnspython fqdn idna natsort python-dateutil setuptools six ];
+  propagatedBuildInputs = [ pyyaml dnspython fqdn idna natsort python-dateutil setuptools six octodns ovh ];
 
   meta = with lib; {
     description = "Tools for managing DNS across multiple providers";

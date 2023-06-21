@@ -42,6 +42,7 @@
       tautulli = python3Packages.callPackage ./tautulli {};
       seafile = callPackage ./seafile {};
       octodns = python3Packages.callPackage ./octodns.nix {};
+      octodns-ovh = python3Packages.callPackage ./octodns-ovh.nix {};
       kubeshark = callPackage ./kubeshark {} ;
       docker-base-latest = callPackage ./docker {} ;
       docker-base-debug = callPackage ./docker/debug.nix {} ;

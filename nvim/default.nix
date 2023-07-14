@@ -20,6 +20,7 @@ neovim.override {
       start = [ 
         blamer-nvim
         vim-one 
+        #catppuccin-nvim
         fugitive 
         vim-devicons 
         salt-vim 

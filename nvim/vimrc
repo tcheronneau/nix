@@ -40,7 +40,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
-vim.cmd('colorscheme one')
+vim.cmd('colorscheme onedark')
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
@@ -63,6 +63,7 @@ require("nvim-tree").setup({
     timeout = 500,
   },
 })
+
 --require("nvim-tree.api").tree.open()
 require("lualine").setup({
   options = {
@@ -175,8 +176,6 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 vim.keymap.set('n', '<leader><Left>', '<Cmd>BufferPrevious<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader><Right>', '<Cmd>BufferNext<CR>', { noremap = true, silent = true })
 
-=======
->>>>>>> origin/newvim
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {

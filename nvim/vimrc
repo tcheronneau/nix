@@ -40,7 +40,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme catppuccin')
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
@@ -68,7 +68,7 @@ require("nvim-tree").setup({
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    theme = 'onedark',
+    theme = 'catppuccin',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
@@ -173,6 +173,17 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 -- [[ Configure barbar ]]
+-- [[ Configure barbar ]]
+vim.g.barbar_auto_setup = false -- disable auto-setup
+
+require('barbar').setup {
+  -- Set the filetypes which barbar will offset itself for
+  sidebar_filetypes = {
+  -- Use the default values: {event = 'BufWinLeave', text = nil}
+    NvimTree = true,
+  },
+}
+
 vim.keymap.set('n', '<leader><Left>', '<Cmd>BufferPrevious<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader><Right>', '<Cmd>BufferNext<CR>', { noremap = true, silent = true })
 
@@ -180,8 +191,9 @@ vim.keymap.set('n', '<leader><Right>', '<Cmd>BufferNext<CR>', { noremap = true, 
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  --ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
-  parser_install_dir = "~/.local/share/nvim-treesitter/parser";
+  --ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim', 'bash' },
+  --ensure_installed = { 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim', 'bash' },
+  --parser_install_dir = "~/.local/share/nvim-treesitter/parser";
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,

@@ -22,6 +22,7 @@ neovim.override {
         vim-one 
         catppuccin-nvim
         onedarkpro-nvim
+        vim-code-dark
         rose-pine
         fugitive 
         vim-devicons 

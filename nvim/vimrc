@@ -40,7 +40,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
-vim.cmd('colorscheme catppuccin')
+vim.cmd('colorscheme codedark')
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
@@ -68,7 +68,7 @@ require("nvim-tree").setup({
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    theme = 'catppuccin',
+    theme = 'codedark',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
@@ -103,7 +103,7 @@ require("lualine").setup({
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = {'nvim-tree'}
 })
 require("bufferline").setup{
   options= {

@@ -20,6 +20,10 @@ neovim.override {
       start = [ 
         blamer-nvim
         vim-one 
+        catppuccin-nvim
+        onedarkpro-nvim
+        vim-code-dark
+        rose-pine
         fugitive 
         vim-devicons 
         salt-vim 
@@ -52,7 +56,15 @@ neovim.override {
         gitsigns-nvim
         friendly-snippets
         barbar-nvim
-        nvchad
+        nvim-treesitter-parsers.bash
+        nvim-treesitter-parsers.python
+        nvim-treesitter-parsers.rust
+        nvim-treesitter-parsers.nix
+        nvim-treesitter-parsers.terraform
+        nvim-treesitter-parsers.go
+        nvim-treesitter-parsers.yaml
+        nvim-treesitter-parsers.json
+        nvim-treesitter-parsers.dockerfile
       ];
 
       opt = [ ];

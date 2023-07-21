@@ -13,7 +13,7 @@ in
     name = "beeper";
     src = fetchurl {
       url = "https://download.beeper.com/linux/appImage/x64";
-      hash = "sha256-Od8nuKeoQebpStR+33yJKMWf71Q9gvBqH10sGdd1PR4=";
+      hash = "sha256-OPtp0lXo4Xw0LQOR9CuOaDdd2+YhaBMjvgWlvbPU2cM=";
     };
     extraInstallCommands = ''
       mkdir -p $out/share

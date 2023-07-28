@@ -1,22 +1,28 @@
 { fetchurl, appimageTools, makeDesktopItem, ... }:
 let 
-  name = "beeper";
+  pname = "beeper";
+  version = "12";
   desktopItem = makeDesktopItem {
-    name = name;
-    desktopName = name;
+    name = pname;
+    desktopName = pname;
     comment = "Beeper is an aggregator of messaging apps";
-    exec = name;
+    exec = pname;
     icon = "beeper";
   };
+  src = fetchurl {
+    url = "https://download.beeper.com/linux/appImage/x64";
+    hash = "sha256-Od8nuKeoQebpStR+33yJKMWf71Q9gvBqH10sGdd1PR4=";
+  };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 in 
-  appimageTools.wrapType2 { # or wrapType1
-    name = "beeper";
-    src = fetchurl {
-      url = "https://download.beeper.com/linux/appImage/x64";
-      hash = "sha256-Od8nuKeoQebpStR+33yJKMWf71Q9gvBqH10sGdd1PR4=";
-    };
+  appimageTools.wrapType2 rec { # or wrapType1
+    inherit pname version src;
+
     extraInstallCommands = ''
       mkdir -p $out/share
       cp -r ${desktopItem}/share/applications $out/share
+      cp -r ${appimageContents}/usr/share/icons $out/share/icons
     '';
   }

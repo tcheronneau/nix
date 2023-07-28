@@ -10,6 +10,16 @@ let
       sha256 = "sha256-6Gr6/soyN5r+NRpDrFs9aT/assuQF9ydR3TfZnPlygI=";
     };
   };
+  pets = vimUtils.buildVimPlugin {
+    pname = "pets.nvim";
+    version = "latest";
+    src = fetchFromGitHub {
+      owner = "giusgad";
+      repo = "pets.nvim";
+      rev = "94b4724e031fc3c9b6da19bdef574f44fabcca16";
+      sha256 = "sha256-CtBCiTo26cTU+q/67QSrondNeyoAdVuIXMHZnxHMIm4=";
+    };
+  };
   vimrc = builtins.readFile ./vimrc;
 in
 neovim.override {
@@ -24,6 +34,7 @@ neovim.override {
         onedarkpro-nvim
         vim-code-dark
         rose-pine
+        pets
         fugitive 
         vim-devicons 
         salt-vim 

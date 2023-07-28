@@ -1,7 +1,7 @@
 { fetchurl, appimageTools, makeDesktopItem, ... }:
 let 
   pname = "beeper";
-  version = "12";
+  version = "";
   desktopItem = makeDesktopItem {
     name = pname;
     desktopName = pname;
@@ -24,5 +24,6 @@ in
       mkdir -p $out/share
       cp -r ${desktopItem}/share/applications $out/share
       cp -r ${appimageContents}/usr/share/icons $out/share/icons
+      mv $out/bin/${pname}-${version} $out/bin/${pname}
     '';
   }

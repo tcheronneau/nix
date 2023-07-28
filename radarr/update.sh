@@ -15,7 +15,7 @@ updateHash()
 
     hashKey="${arch}-${os}_hash"
 
-    url="https://github.com/Radarr/Radarr/releases/download/v$version/Radarr.master.$version.$os-core-$arch.tar.gz"
+    url="https://github.com/Radarr/Radarr/releases/download/v$version/Radarr.develop.$version.$os-core-$arch.tar.gz"
     hash=$(nix-prefetch-url --type sha256 $url)
     sriHash="$(nix hash to-sri --type sha256 $hash)"
 

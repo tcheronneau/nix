@@ -11,7 +11,7 @@ let
   };
   src = fetchurl {
     url = "https://download.beeper.com/linux/appImage/x64";
-    hash = "sha256-Od8nuKeoQebpStR+33yJKMWf71Q9gvBqH10sGdd1PR4=";
+    hash = "sha256-48VRjhGVIKdmMsepbmTih8Lb4vJeCIAp6E1CfD06Tx8="; 
   };
   appimageContents = appimageTools.extractType2 {
     inherit pname version src;

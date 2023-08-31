@@ -9,7 +9,7 @@
     armpkgs = import nixpkgs {
       inherit system;
       crossSystem = {
-        config = "armv7l-linux";
+        config = "aarch64-linux";
       };
     };
     pkgs = import nixpkgs { 

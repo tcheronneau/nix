@@ -10,24 +10,14 @@ let
       sha256 = "sha256-6Gr6/soyN5r+NRpDrFs9aT/assuQF9ydR3TfZnPlygI=";
     };
   };
-  coc-ansible = vimUtils.buildVimPlugin {
-    pname = "coc-ansible";
-    version = "test";
+  pets = vimUtils.buildVimPlugin {
+    pname = "pets.nvim";
+    version = "latest";
     src = fetchFromGitHub {
-      owner = "yaegassy";
-      repo = "coc-ansible";
-      rev = "507cde4d172e1732266b4d50d2a98dfde3dc6ab9";
-      sha256 = "sha256-nFwaDcWB5zkdb9MZLdKRh7dQS5vxdQ0W7muKfPcKvwc=";
-    };
-  };
-  blamer = vimUtils.buildVimPlugin {
-    pname = "blamer";
-    version = "test";
-    src = fetchFromGitHub {
-      owner = "APZelos";
-      repo = "blamer.nvim";
-      rev = "f4eb22a9013642c411725fdda945ae45f8d93181";
-      sha256 = "sha256-etLCmzOMi7xjYc43ZBqjPnj2gqrrSbmtcKdw6eZT8rM=";
+      owner = "giusgad";
+      repo = "pets.nvim";
+      rev = "94b4724e031fc3c9b6da19bdef574f44fabcca16";
+      sha256 = "sha256-CtBCiTo26cTU+q/67QSrondNeyoAdVuIXMHZnxHMIm4=";
     };
   };
   vimrc = builtins.readFile ./vimrc;
@@ -37,7 +27,57 @@ neovim.override {
     customRC = vimrc; 
     packages.myVimPackage = with vimPlugins; {
       # see examples below how to use custom packages
-      start = [ blamer vim-one coc-nvim vim-airline vim-airline-themes fugitive vim-devicons salt-vim vim-terraform neomux rust-vim salt-vim vim-devicons coc-ansible vim-nix ansible-vim vim-go syntastic fzf-vim bufferline-nvim vim-nix vim-nixhash nvim-web-devicons nvim-tree-lua rust-tools-nvim ];
+      start = [ 
+        blamer-nvim
+        vim-one 
+        catppuccin-nvim
+        onedarkpro-nvim
+        vim-code-dark
+        rose-pine
+        pets
+        fugitive 
+        vim-devicons 
+        salt-vim 
+        vim-terraform 
+        neomux 
+        rust-vim 
+        vim-devicons 
+        ansible-vim 
+        vim-go 
+        syntastic 
+        fzf-vim 
+        bufferline-nvim 
+        vim-nix 
+        vim-nixhash 
+        nvim-web-devicons 
+        nvim-tree-lua 
+        rust-tools-nvim 
+        telescope-nvim 
+        nvim-lspconfig 
+        nvim-treesitter 
+        nvim-cmp 
+        cmp_luasnip
+        cmp-nvim-lsp 
+        luasnip 
+        cmp-buffer 
+        cmp-path
+        neodev-nvim 
+        vim-sleuth
+        lualine-nvim
+        gitsigns-nvim
+        friendly-snippets
+        barbar-nvim
+        nvim-treesitter-parsers.bash
+        nvim-treesitter-parsers.python
+        nvim-treesitter-parsers.rust
+        nvim-treesitter-parsers.nix
+        nvim-treesitter-parsers.terraform
+        nvim-treesitter-parsers.go
+        nvim-treesitter-parsers.yaml
+        nvim-treesitter-parsers.json
+        nvim-treesitter-parsers.dockerfile
+      ];
+
       opt = [ ];
     };
   };

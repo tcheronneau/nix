@@ -6,7 +6,7 @@ cd $DIR
 echo $DIR
 if [ -z $1 ]
 then
-  SOFTS=( "plex" "sonarr" "radarr" "tautulli" "jackett" "prowlarr" )
+  SOFTS=( "plex" "sonarr" "radarr" "tautulli" "prowlarr" )
 else
   SOFTS=$1
 fi
@@ -36,8 +36,9 @@ do
       docker push mcth/${SOFT}:${VERSION}
       kubectl set image "deploy/${SOFT}" -n "${NS}" "${SOFT}=mcth/${SOFT}:${VERSION:-latest}"
     fi
+    git -C $DIR pull
     git -C $DIR commit -am "Update ${SOFT} with new version : ${VERSION}"
-    curl -XPOST -H 'Content-Type: application/json' https://webhook.mcth.eu/gitlab -d "{'project': {'name': '${SOFT}'}, 'message': '${VERSION}'}"
+    curl -XPOST -H 'Content-Type: application/json' https://webhook.mcth.eu/gitlab -d '{"project": { "name": "'"${SOFT}"'" }, "message": "'"${VERSION}"'" }'
     git -C $DIR push
   fi
 done

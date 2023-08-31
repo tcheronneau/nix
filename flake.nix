@@ -24,6 +24,7 @@
   in
   {
     packages.${system} = with pkgs; rec {
+      beeper = callPackage ./beeper.nix {};
       nvim = callPackage ./nvim {};
       scripts = callPackage ./mybash {};
       enpass = callPackage ./enpass {};
@@ -40,12 +41,14 @@
       ombi = callPackage ./ombi {};
       tautulli = python3Packages.callPackage ./tautulli {};
       seafile = callPackage ./seafile {};
+      octodns = python3Packages.callPackage ./octodns.nix {};
+      octodns-ovh = python3Packages.callPackage ./octodns-ovh.nix {};
       kubeshark = callPackage ./kubeshark {} ;
-      docker-base = callPackage ./docker {} ;
+      docker-base-latest = callPackage ./docker {} ;
       docker-base-debug = callPackage ./docker/debug.nix {} ;
       aiac = callPackage ./aiac {} ;
       gitops = callPackage ./gitops.nix {} ;
-      docker-sonarr = callPackage ./sonarr/docker.nix {} ;
+      docker-sonarr = callPackage ./sonarr/docker.nix { inherit docker-base-latest docker-base-debug ; } ;
       docker-prowlarr = callPackage ./prowlarr/docker.nix {} ;
       docker-jackett = callPackage ./jackett/docker.nix {} ;
       docker-radarr = callPackage ./radarr/docker.nix {} ;

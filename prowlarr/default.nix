@@ -16,14 +16,14 @@ let
   }."${stdenv.hostPlatform.system}" or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
   hash = {
-    x64-linux_hash = "sha256-U7EKkiy1wXd2Lw76yD7gDuqcBFn0yUXAc2W/5sJM+oY=";
-    arm64-linux_hash = "sha256-VCmyaRhy+9XRoY60ALlyecjBsWFKKjkTQwZHysGMgiU=";
-    x64-osx_hash = "sha256-QDS1j/J91awz1d7kv58o09twMNcj+gUJfpkJPzT6uH4=";
+    x64-linux_hash = "sha256-tAjA+L7yvUt5fJgQIv2knc3yXJK3GtlAvRj+68i5oJs=";
+    arm64-linux_hash = "sha256-PrS5fUvHSGdxLSFjGT/YjKyJxDK1I6KyDidnTSzEIB4=";
+    x64-osx_hash = "sha256-+NJ8BXrCfPyVWkZfRwKbPZvIXjlpBItRygxe+bw7HFc=";
   }."${arch}-${os}_hash";
 
 in stdenv.mkDerivation rec {
   pname = "prowlarr";
-  version = "1.8.4.3884";
+  version = "1.8.5.3896";
 
   src = fetchurl {
     url = "https://github.com/Prowlarr/Prowlarr/releases/download/v${version}/Prowlarr.develop.${version}.${os}-core-${arch}.tar.gz";

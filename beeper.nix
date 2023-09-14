@@ -26,4 +26,5 @@ in
       cp -r ${appimageContents}/usr/share/icons $out/share/icons
       mv $out/bin/${pname}-${version} $out/bin/${pname}
     '';
+    extraPkgs = pkgs: with pkgs; [ libsecret ];
   }

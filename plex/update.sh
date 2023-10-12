@@ -25,4 +25,5 @@ updateHash()
 
 updateHash $version arm64
 updateHash $version x64
+echo "VERSION $version"
 sed -i "s/version = \"[0-9a-z.-]*\";/version = \"$version\";/g" "$dirname/raw.nix"

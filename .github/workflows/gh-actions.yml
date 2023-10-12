@@ -1,0 +1,13 @@
+name: Building nix packages
+run-name: ${{ github.actor }} is running Github actions
+inputs:
+  package:
+    description: Package name
+    required: false
+    default: sonarr
+jobs:
+  Testing:
+    runs-on: nixos/nix
+    steps:
+      - run: echo "Running for package ${inputs.package}"
+      - run: nix build .#${inputs.package}

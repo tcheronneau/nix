@@ -1,5 +1,6 @@
 name: Building nix packages
 run-name: ${{ github.actor }} is running Github actions
+on: [push]
 inputs:
   package:
     description: Package name

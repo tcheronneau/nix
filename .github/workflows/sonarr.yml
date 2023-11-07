@@ -8,4 +8,4 @@ jobs:
       - run: echo "Running for package sonarr"
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: /run/current-system/sw/bin/nix build .#sonarr --show-trace
+      - run: /run/current-system/sw/bin/nix-build . -A sonarr 

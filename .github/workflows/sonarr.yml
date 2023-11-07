@@ -13,7 +13,5 @@ jobs:
       - run: echo "$GITHUB_SHA"
       - run: |
           ls -l 
-          ls -l .git
-          FILES=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
-          echo $FILES
+          pwd
       #- run: nix build .#sonarr 

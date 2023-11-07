@@ -3,7 +3,6 @@ run-name: Building a nix package
 on: [push]
 env:
   PATH: "${PATH}:/run/current-system/sw/bin"
-  HOME: "$PWD"
 jobs:
   Testing:
     runs-on: native 

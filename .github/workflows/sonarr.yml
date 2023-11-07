@@ -11,8 +11,5 @@ jobs:
       - run: echo "Running for package sonarr"
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: whoami
-      - run: nix build .#sonarr 
-      - run: |
-          ls -l
-          ls -l result
+      - run: git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA"
+      #- run: nix build .#sonarr 

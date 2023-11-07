@@ -10,5 +10,8 @@ jobs:
       - run: echo "Running for package sonarr"
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: echo $(git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA")
+      - run: echo "$GITHUB_SHA"
+      - run: |
+          FILES=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
+          echo $FILES
       #- run: nix build .#sonarr 

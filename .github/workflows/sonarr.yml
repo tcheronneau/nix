@@ -14,4 +14,6 @@ jobs:
       - run: |
           ls -l 
           pwd
+          git status
+          git branch
       #- run: nix build .#sonarr 

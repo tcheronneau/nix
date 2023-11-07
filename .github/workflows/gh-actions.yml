@@ -1,5 +1,6 @@
 name: Building nix packages
 run-name: Building a nix package 
+on: [push]
 jobs:
   Testing:
     runs-on: native

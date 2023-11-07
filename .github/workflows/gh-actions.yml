@@ -1,0 +1,16 @@
+name: Building nix packages
+run-name: Building a nix package 
+on: 
+  workflow_dispatch:
+    inputs:
+      package:
+        description: Package name
+        required: false
+        default: sonarr
+        type: string
+jobs:
+  Testing:
+    runs-on: nixos/nix
+    steps:
+      - run: echo "Running for package ${inputs.package}"
+      - run: nix build .#${inputs.package}

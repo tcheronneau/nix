@@ -3,7 +3,7 @@ run-name: Building a nix package
 on: [push]
 jobs:
   Testing:
-    runs-on: nixos-nix
+    runs-on: native 
     steps:
       - run: echo "Running for package sonarr"
-      - run: nix build .#sonarr
+      - run: /run/current-system/sw/bin/nix build .#sonarr

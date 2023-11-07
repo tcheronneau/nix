@@ -15,6 +15,7 @@ jobs:
           pwd
           git status
           echo "${GITHUB_SHA}"
+          git show --name-only ${GITHUB_SHA}
           git diff-tree --no-commit-id --name-only "${GITHUB_SHA}" 
           
       #- run: nix build .#sonarr 

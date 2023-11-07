@@ -1,6 +1,8 @@
 name: Building nix packages
 run-name: Building a nix package 
 on: [push]
+env:
+  PATH: "${PATH}:/run/current-system/sw/bin"
 jobs:
   Testing:
     runs-on: native 
@@ -8,4 +10,5 @@ jobs:
       - run: echo "Running for package sonarr"
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: /run/current-system/sw/bin/nix-build . -A sonarr 
+      - run: whoami
+      #- run: /run/current-system/sw/bin/nix-build . -A sonarr 

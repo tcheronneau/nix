@@ -10,7 +10,7 @@ on:
         type: string
 jobs:
   Testing:
-    runs-on: nixos/nix
+    runs-on: native
     steps:
       - run: echo "Running for package ${inputs.package}"
       - run: nix build .#${inputs.package}

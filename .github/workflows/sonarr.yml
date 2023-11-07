@@ -14,10 +14,7 @@ jobs:
           fetch-depth: '5'
       - run: echo "$GITHUB_SHA"
       - run: |
-          pwd
-          git status
           echo "${GITHUB_SHA}"
-          git show --name-only ${GITHUB_SHA}
-          git diff-tree --no-commit-id --name-only "${GITHUB_SHA}" 
+          git diff-tree --no-commit-id --name-only -r "${GITHUB_SHA}" 
           
       #- run: nix build .#sonarr 

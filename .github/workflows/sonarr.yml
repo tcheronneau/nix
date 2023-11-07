@@ -16,7 +16,6 @@ jobs:
           pwd
           git status
           git branch
-          git diff-tree --no-commit-id --name-only  bae161319f5508217554df1805503fd9175a430d
           git diff-tree --no-commit-id --name-only "${GITHUB_SHA}" 
           
       #- run: nix build .#sonarr 

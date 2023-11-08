@@ -6,3 +6,4 @@ LAST=$(curl -s https://services.sonarr.tv/v1/download/main|jq -r '.version')
 VERSION=${VERSION:-$LAST}
 update-source-version sonarr "$VERSION"
 echo "VERSION $VERSION"
+

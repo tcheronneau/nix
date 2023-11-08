@@ -13,8 +13,8 @@ jobs:
         with:
           fetch-depth: '5'
       - run: echo "$GITHUB_SHA"
+      - run: env
       - run: |
-          echo "${GITHUB_SHA}"
           FILES=$(git diff-tree --no-commit-id --name-only -r "${GITHUB_SHA}")
           for FILE in ${FILES[@]}
           do

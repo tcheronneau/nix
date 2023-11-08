@@ -25,6 +25,7 @@ jobs:
               echo "Nix file"
               FILENAME=$(basename ${FILE})
               DIRNAME=$(dirname ${FILE})
+              echo ${DIRNAME}
               if [[ ${DIRNAME} != "." ]]
               then
                 nix build .#${DIRNAME}

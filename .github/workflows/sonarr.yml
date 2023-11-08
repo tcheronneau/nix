@@ -19,7 +19,7 @@ jobs:
           for FILE in ${FILES[@]}
           do
             echo "${FILE} has been changed"
-            if [[ "${FILE}" ~ /*.nix/ ]]
+            if [[ "${FILE}" =~ \.nix$ ]]
             then
               echo "Nix file"
               FILENAME=$(basename ${FILE})

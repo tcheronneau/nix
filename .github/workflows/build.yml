@@ -22,16 +22,13 @@ jobs:
             echo "${FILE} has been changed"
             if [[ "${FILE}" =~ \.nix$ ]]
             then
-              echo "Nix file"
               FILENAME=$(basename ${FILE})
               DIRNAME=$(dirname ${FILE})
-              echo ${DIRNAME}
               if [[ "${DIRNAME}" != "." ]]
               then
                 echo "Building package ${DIRNAME}"
                 nix build .#${DIRNAME}
                 echo "${DIRNAME} has been built"
-                ls result
               fi
             fi
           done

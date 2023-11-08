@@ -30,6 +30,8 @@ jobs:
               then
                 echo "Building package ${DIRNAME}"
                 nix build .#${DIRNAME}
+                echo "${DIRNAME} has been built"
+                ls result
               fi
             fi
           done

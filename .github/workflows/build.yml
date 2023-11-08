@@ -26,8 +26,9 @@ jobs:
               FILENAME=$(basename ${FILE})
               DIRNAME=$(dirname ${FILE})
               echo ${DIRNAME}
-              if [[ ${DIRNAME} != "." ]]
+              if [[ "${DIRNAME}" != "." ]]
               then
+                echo "Building package ${DIRNAME}"
                 nix build .#${DIRNAME}
               fi
             fi

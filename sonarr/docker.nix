@@ -5,6 +5,7 @@
 , docker-base-debug
 , docker-base-latest
 }:
+
 let sonarr = callPackage ./default.nix {};
 in 
   dockerTools.buildLayeredImage {

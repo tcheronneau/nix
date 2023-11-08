@@ -1,0 +1,34 @@
+name: Building nix packages
+run-name: Building a nix package 
+on: [push]
+env:
+  PATH: "${PATH}:/run/current-system/sw/bin"
+  HOME: "${PWD}"
+jobs:
+  Testing:
+    runs-on: native 
+    steps:
+      - run: echo "Running for package sonarr"
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '5'
+      - run: echo "$GITHUB_SHA"
+      - run: env
+      - run: |
+          FILES=$(git diff-tree --no-commit-id --name-only -r "${GITHUB_SHA}")
+          for FILE in ${FILES[@]}
+          do
+            echo "${FILE} has been changed"
+            if [[ "${FILE}" =~ \.nix$ ]]
+            then
+              echo "Nix file"
+              FILENAME=$(basename ${FILE})
+              DIRNAME=$(dirname ${FILE})
+              if [[ ${DIRNAME} != "." ]]
+              then
+                nix build .#${DIRNAME}
+              fi
+            fi
+          done
+      #- run: nix build .#sonarr 

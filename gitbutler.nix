@@ -1,4 +1,4 @@
-{ fetchurl, appimageTools, makeDesktopItem, ... }:
+{ fetchurl, appimageTools, makeDesktopItem, makeWrapper, ... }:
 let 
   pname = "gitbutler";
   version = "";

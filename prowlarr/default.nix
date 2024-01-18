@@ -23,7 +23,7 @@ let
 
 in stdenv.mkDerivation rec {
   pname = "prowlarr";
-  version = "1.12.1.4201";
+  version = "1.12.2.4211";
 
   src = fetchurl {
     url = "https://github.com/Prowlarr/Prowlarr/releases/download/v${version}/Prowlarr.develop.${version}.${os}-core-${arch}.tar.gz";

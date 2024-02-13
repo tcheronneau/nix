@@ -38,7 +38,7 @@ do
     fi
     git -C $DIR pull
     git -C $DIR commit -am "Update ${SOFT} with new version : ${VERSION}"
-    curl -XPOST -H 'Content-Type: application/json' https://webhook.mcth.eu/gitlab -d '{"project": { "name": "'"${SOFT}"'" }, "message": "'"${VERSION}"'" }'
+    curl -XPOST -H 'Content-Type: application/json' https://rshook.mcth.eu/send -d '{"title": "'"${SOFT}"'", "message": "'"${VERSION}"'" }'
     git -C $DIR push
   fi
 done

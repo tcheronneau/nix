@@ -19,6 +19,7 @@ in
         "${sonarr}/bin/NzbDrone"
         "-nobrowser" "-data=/config"
       ];
+      Env = ["COMPlus_EnableDiagnostics=0"];
       ExposedPorts = {
         "8989/tcp" = { };
       };

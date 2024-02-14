@@ -43,3 +43,4 @@ updateHash $latestVersion arm64 linux
 updateHash $latestVersion x64 osx
 updateHash $latestVersion arm64 osx
 
+echo "VERSION $latestVersion"

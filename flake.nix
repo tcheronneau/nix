@@ -42,6 +42,7 @@
       ombi = callPackage ./ombi {};
       tautulli = python3Packages.callPackage ./tautulli {};
       seafile = callPackage ./seafile {};
+      kpcli = callPackage ./kpcli.nix {};
       octodns = python3Packages.callPackage ./octodns.nix {};
       octodns-ovh = python3Packages.callPackage ./octodns-ovh.nix {};
       kubeshark = callPackage ./kubeshark {} ;

@@ -34,8 +34,8 @@
       plex = callPackage ./plex {};
       jackett = callPackage ./jackett {};
       bazarr = callPackage ./bazarr {};
-      gil = callPackage ./gil {};
       #arm-sonarr = pkgs.pkgsCross.${arm}.callPackage ./sonarr {};
+      gil = callPackage ./gil.nix {};
       arm-sonarr = armpkgs.callPackage ./sonarr {};
       flaresolverr = python3Packages.callPackage ./flaresolverr.nix {};
       magic-wormhole-transit = python3Packages.callPackage ./magic-wormhole-transit.nix {};

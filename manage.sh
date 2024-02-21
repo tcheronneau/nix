@@ -6,7 +6,7 @@ cd $DIR
 echo $DIR
 if [ -z $1 ]
 then
-  SOFTS=( "plex" "sonarr" "radarr" "tautulli" "prowlarr" )
+  SOFTS=( "plex" "sonarr" "radarr" "tautulli" "prowlarr" "bazarr" )
 else
   SOFTS=$1
 fi

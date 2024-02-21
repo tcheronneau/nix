@@ -3,6 +3,9 @@
   cargo, 
   lib, 
   fetchFromGitHub,
+  cmake,
+  pkg-config,
+  openssl,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -21,6 +24,13 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [
     rustc
     cargo
+    cmake
+    pkg-config
+    openssl.dev
+  ];
+  buildInputs = [
+    pkg-config
+    openssl.dev
   ];
   meta = with lib; {
     homepage = "https://github.com/eburghar/gil";

@@ -57,6 +57,7 @@
       docker-radarr = callPackage ./radarr/docker.nix {} ;
       docker-tautulli = callPackage ./tautulli/docker.nix {} ;
       docker-ombi = callPackage ./ombi/docker.nix {} ;
+      docker-bazarr = callPackage ./bazarr/docker.nix {} ;
     };
   };
 }

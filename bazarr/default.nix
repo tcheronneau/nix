@@ -18,7 +18,7 @@ stdenv.mkDerivation rec {
     cp -r * $out/share/${pname}-${version}
     makeWrapper "${
       (python3.withPackages
-        (ps: [ ps.lxml ps.numpy ps.gevent ps.gevent-websocket ])).interpreter
+        (ps: [ ps.lxml ps.numpy ps.gevent ps.gevent-websocket ps.setuptools ps.pillow ])).interpreter
     }" \
       $out/bin/bazarr \
       --add-flags "$out/share/${pname}-${version}/bazarr.py" \

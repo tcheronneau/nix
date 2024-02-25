@@ -5,8 +5,8 @@ stdenv.mkDerivation rec {
   version = "0.1.0";
 
   src = fetchGit {
-    url = "git@gitlab.mcth.fr:thomas/awesome-script.git";
-    rev = "d689703ffd4b0b4db52948453c4c8724083c2482";
+    url = "gitea@git.mcth.fr:thomas/awesome-script.git";
+    rev = "3675e190e71244c990d6bfc1fbbba2d867044945";
   };
 
   buildInputs = [

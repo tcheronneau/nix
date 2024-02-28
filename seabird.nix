@@ -14,6 +14,7 @@
   pango,
   cairo,
   gdk-pixbuf,
+  wrapGAppsHook,
 }:
 
 buildGoModule rec {
@@ -64,6 +65,7 @@ buildGoModule rec {
     pango
     cairo
     gdk-pixbuf
+    wrapGAppsHook
   ];
 
 

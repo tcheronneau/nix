@@ -26,6 +26,7 @@
     packages.${system} = with pkgs; rec {
       beeper = callPackage ./beeper.nix {};
       gitbutler = callPackage ./gitbutler.nix {};
+      seabird = callPackage ./seabird.nix {};
       nvim = callPackage ./nvim {};
       scripts = callPackage ./mybash {};
       enpass = callPackage ./enpass {};

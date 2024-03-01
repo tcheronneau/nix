@@ -27,6 +27,7 @@
       beeper = callPackage ./beeper.nix {};
       gitbutler = callPackage ./gitbutler.nix {};
       seabird = callPackage ./seabird.nix {};
+      warp-terminal = callPackage ./warp-terminal.nix {};
       nvim = callPackage ./nvim {};
       scripts = callPackage ./mybash {};
       enpass = callPackage ./enpass {};

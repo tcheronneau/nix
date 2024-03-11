@@ -4,7 +4,7 @@
 set -e
 
 dirname="$(dirname "$0")"
-LAST=$(curl -s https://api.github.com/repos/radarr/radarr/tags|jq -r '.[0].name'|sed "s/v//g")
+LAST=$(curl -s https://api.github.com/repos/radarr/radarr/releases/latest|jq -r '.tag_name'|sed "s/v//g")
 VERSION=${VERSION:-$LAST}
 
 updateHash()

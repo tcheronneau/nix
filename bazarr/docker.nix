@@ -3,7 +3,6 @@ let bazarr = pkgs.python3Packages.callPackage ./default.nix {};
 in 
   pkgs.dockerTools.buildLayeredImage {
     name = "mcth/bazarr";
-    contents = [ bazarr ];
     tag = "nix";
     created = "now";
     config = {

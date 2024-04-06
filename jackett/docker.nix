@@ -3,7 +3,7 @@ let jackett = callPackage ./default.nix {};
 in 
   dockerTools.buildLayeredImage {
     name = "mcth/jackett";
-    contents = [ jackett dockerTools.caCertificates ];
+    contents = [ dockerTools.caCertificates ];
     tag = "nix";
     created = "now";
     extraCommands = "mkdir -m 0777 tmp";

@@ -3,7 +3,6 @@ let ombi = pkgs.callPackage ./default.nix {};
 in 
   pkgs.dockerTools.buildLayeredImage {
     name = "mcth/ombi";
-    contents = [ ombi ];
     tag = "nix";
     created = "now";
     config = {

@@ -54,10 +54,11 @@
       aiac = callPackage ./aiac {} ;
       gitops = callPackage ./gitops.nix {} ;
       docker-sonarr = callPackage ./sonarr/docker.nix { inherit docker-base-latest docker-base-debug ; } ;
-      docker-sonarr-debug = callPackage ./sonarr/docker-debug.nix { };
+      docker-sonarr-debug = callPackage ./sonarr/docker.nix { inherit docker-base-latest docker-base-debug ; debug=true; } ;
       docker-prowlarr = callPackage ./prowlarr/docker.nix {} ;
       docker-jackett = callPackage ./jackett/docker.nix {} ;
-      docker-radarr = callPackage ./radarr/docker.nix {} ;
+      docker-radarr = callPackage ./radarr/docker.nix { inherit docker-base-latest docker-base-debug ; } ;
+      docker-radarr-debug = callPackage ./radarr/docker.nix { inherit docker-base-latest docker-base-debug ; debug=true; } ;
       docker-tautulli = callPackage ./tautulli/docker.nix {} ;
       docker-ombi = callPackage ./ombi/docker.nix {} ;
       docker-bazarr = callPackage ./bazarr/docker.nix {} ;

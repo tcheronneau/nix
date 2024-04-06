@@ -2,6 +2,7 @@
   callPackage
 , lib
 , dockerTools
+, debug ? false 
 , docker-base-debug
 , docker-base-latest
 , cacert
@@ -10,25 +11,20 @@
 
 let 
   sonarr = callPackage ./default.nix {};
-  base = dockerTools.buildImage {
-    name = "mcth/base";
-    tag = "latest";
-    created = "now";
-    runAsRoot = ''
-      #!${runtimeShell}
-      ${dockerTools.shadowSetup}
-      groupadd -g 1005 -r sonarr
-      useradd -u 1005 -r -g sonarr sonarr 
-      mkdir -p /config
-      chown -R sonarr:sonarr /config
-    '';
-  };
+  base = if debug then
+    docker-base-debug
+  else
+    docker-base-latest;
+  tag = if debug then
+    "nix-debug"
+  else
+    "nix";
 in 
   dockerTools.buildLayeredImage {
     name = "mcth/sonarr";
-    fromImage = base; 
+    fromImage = base;
     contents = [ cacert ];
-    tag = "nix";
+    tag = tag;
     created = "now";
     config = {
       Cmd = [

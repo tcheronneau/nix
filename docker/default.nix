@@ -1,7 +1,6 @@
 { dockerTools, runtimeShell }:
 
 
-
 dockerTools.buildImage{
   name = "mcth/base";
   created = "now";

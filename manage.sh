@@ -3,6 +3,7 @@
 DIR=$(dirname ${BASH_SOURCE[0]})
 cd $DIR
 
+source .env
 echo $DIR
 if [ -z $1 ]
 then
@@ -38,7 +39,7 @@ do
     fi
     git -C $DIR pull
     git -C $DIR commit -am "Update ${SOFT} with new version : ${VERSION}"
-    curl -XPOST -H 'Content-Type: application/json' https://rshook.mcth.eu/send -d '{"title": "'"${SOFT}"'", "message": "'"${VERSION}"'" }'
+    curl -XPOST -H 'Content-Type: application/json' https://${USER}:${PASSWORD}@rshook.mcth.eu/send -d '{"title": "'"${SOFT}"'", "message": "'"${VERSION}"'" }'
     git -C $DIR push
   fi
 done

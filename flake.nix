@@ -24,6 +24,7 @@
   in
   {
     packages.${system} = with pkgs; rec {
+      authentik = callPackage ./authentik.nix {};
       beeper = callPackage ./beeper.nix {};
       gitbutler = callPackage ./gitbutler.nix {};
       seabird = callPackage ./seabird.nix {};

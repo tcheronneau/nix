@@ -13,6 +13,7 @@ rec {
     plex = callPackage ./plex {};
     seafile = callPackage ./seafile {};
     kubernetes = callPackage ./kubernetes {};
+    docker-base-latest = callPackage ./docker {};
     docker-sonarr = callPackage ./sonarr/docker.nix {};
     docker-jackett = callPackage ./jackett/docker.nix {};
     kubeshark = callPackage ./kubeshark {} ;

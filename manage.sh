@@ -37,10 +37,10 @@ do
       docker push mcth/${SOFT}:${VERSION}
       kubectl set image "deploy/${SOFT}" -n "${NS}" "${SOFT}=mcth/${SOFT}:${VERSION:-latest}"
     fi
-    git -C $DIR pull
-    git -C $DIR commit -am "Update ${SOFT} with new version : ${VERSION}"
+    git -C ${DIR} pull
+    git -C ${DIR} commit -am "Update ${SOFT} with new version : ${VERSION}"
     curl -XPOST -H 'Content-Type: application/json' https://${USER}:${PASSWORD}@rshook.mcth.eu/send -d '{"title": "'"${SOFT}"'", "message": "'"${VERSION}"'" }'
-    git -C $DIR push
+    git -C ${DIR} push
   fi
 done
 #echo "##############################"

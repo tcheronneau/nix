@@ -37,6 +37,9 @@
       plex = callPackage ./plex {};
       jackett = callPackage ./jackett {};
       bazarr = callPackage ./bazarr {};
+      protonmail-desktop = pkgs.protonmail-desktop.overrideAttrs (_: {
+        version = "1.0.5";
+      });
       #arm-sonarr = pkgs.pkgsCross.${arm}.callPackage ./sonarr {};
       gil = callPackage ./gil.nix {};
       arm-sonarr = armpkgs.callPackage ./sonarr {};

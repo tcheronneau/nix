@@ -27,6 +27,7 @@
     packages.${system} = with pkgs; rec {
       authentik = callPackage ./authentik.nix {};
       beeper = callPackage ./beeper.nix {};
+      ente-desktop = callPackage ./ente-desktop.nix {};
       gitbutler = callPackage ./gitbutler.nix {};
       seabird = callPackage ./seabird.nix {};
       warp-terminal = callPackage ./warp-terminal.nix {};

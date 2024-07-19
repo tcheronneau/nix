@@ -16,6 +16,7 @@
       inherit system; 
       config.allowUnfree = true;
       overlays = [
+        (import ./protonmail-desktop.nix)
         (final: prev: {
           plexRaw = final.callPackage ./plex/raw.nix {};
         })
@@ -37,9 +38,7 @@
       plex = callPackage ./plex {};
       jackett = callPackage ./jackett {};
       bazarr = callPackage ./bazarr {};
-      protonmail-desktop = pkgs.protonmail-desktop.overrideAttrs (_: {
-        version = "1.0.5";
-      });
+      protonmail-desktop = pkgs.protonmail-desktop; 
       #arm-sonarr = pkgs.pkgsCross.${arm}.callPackage ./sonarr {};
       gil = callPackage ./gil.nix {};
       arm-sonarr = armpkgs.callPackage ./sonarr {};

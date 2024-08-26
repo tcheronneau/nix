@@ -10,15 +10,15 @@ let
   }."${stdenv.hostPlatform.system}" or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
   hash = {
-    x64-linux_hash = "sha256-5JRPUMv9KtQL0FFy7nSdGUrWBE1g6Ni6NHRDLQMoGe4=";
-    arm64-linux_hash = "sha256-PkeP73z38llTu6tgZhRsVO99Djn/aF5lO40VFAPlAtI=";
-    x64-osx_hash = "sha256-RfAK/SgfKDeY2BYXn2ZD3ldyLKAtesNqKQnNx2ejG0U=";
-    arm64-osx_hash = "sha256-g6ZNUwvdrET2e5NbtCTL12fVvCqIAjjXiIC4pebdu4g=";
+    x64-linux_hash = "sha256-C61LCeYckO46E/Wm+64DyWS4LBl4mmkFFmY7FLdfFbA=";
+    arm64-linux_hash = "sha256-BKa1sk/ecEQXJ+4THOHbkburgL5/cBZ7/qZETRLxomU=";
+    x64-osx_hash = "sha256-AtmDPJUNa2pbmWxgubgVk0t1RoY/sG4d2RCUWPk209U=";
+    arm64-osx_hash = "sha256-K+ahg3XdrAnyTi4zm9IYxMfhlNRopR+5e7OTNKgnTK8=";
   }."${arch}-${os}_hash";
 in
 stdenv.mkDerivation rec {
   pname = "sonarr";
-  version = "4.0.8.1874";
+  version = "4.0.9.2244";
 
   src = fetchurl {
     url = "https://github.com/Sonarr/Sonarr/releases/download/v${version}/Sonarr.main.${version}.${os}-${arch}.tar.gz";

@@ -52,6 +52,7 @@
       kpcli = callPackage ./kpcli.nix {};
       octodns = python3Packages.callPackage ./octodns.nix {};
       octodns-ovh = python3Packages.callPackage ./octodns-ovh.nix {};
+      taskfile = callPackage ./taskfile.nix {};
       kubeshark = callPackage ./kubeshark {} ;
       docker-base-latest = callPackage ./docker {} ;
       docker-base-debug = callPackage ./docker/debug.nix {} ;

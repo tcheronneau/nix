@@ -54,6 +54,7 @@
       octodns-ovh = python3Packages.callPackage ./octodns-ovh.nix {};
       taskfile = callPackage ./taskfile.nix {};
       kubeshark = callPackage ./kubeshark {} ;
+      kubehound = callPackage ./kubehound.nix {} ;
       docker-base-latest = callPackage ./docker {} ;
       docker-base-debug = callPackage ./docker/debug.nix {} ;
       aiac = callPackage ./aiac {} ;

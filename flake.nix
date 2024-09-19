@@ -59,6 +59,7 @@
       docker-base-debug = callPackage ./docker/debug.nix {} ;
       aiac = callPackage ./aiac {} ;
       gitops = callPackage ./gitops.nix {} ;
+      warpgate = callPackage ./warpgate.nix {} ;
       docker-sonarr = callPackage ./sonarr/docker.nix { inherit docker-base-latest docker-base-debug ; } ;
       docker-sonarr-debug = callPackage ./sonarr/docker.nix { inherit docker-base-latest docker-base-debug ; debug=true; } ;
       docker-prowlarr = callPackage ./prowlarr/docker.nix {} ;

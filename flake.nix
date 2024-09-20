@@ -60,6 +60,7 @@
       aiac = callPackage ./aiac {} ;
       gitops = callPackage ./gitops.nix {} ;
       warpgate = callPackage ./warpgate.nix {} ;
+      warpgate-http-protocol = callPackage ./warpgate-http-protocol.nix {} ;
       docker-sonarr = callPackage ./sonarr/docker.nix { inherit docker-base-latest docker-base-debug ; } ;
       docker-sonarr-debug = callPackage ./sonarr/docker.nix { inherit docker-base-latest docker-base-debug ; debug=true; } ;
       docker-prowlarr = callPackage ./prowlarr/docker.nix {} ;

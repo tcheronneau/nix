@@ -10,15 +10,15 @@ let
   }."${stdenv.hostPlatform.system}" or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
   hash = {
-    x64-linux_hash = "sha256-jRrFl7f0vFT5zY6Kv8+Zdz4FZE6pvc2WMDtK722mKcg=";
-    arm64-linux_hash = "sha256-crj5QLGhWgysGAa8vySMjwig9Mi/o1BHcdVDzC2OJXE=";
+    x64-linux_hash = "sha256-9yUJfwpiYDSw0seBeJgxB5vuKROUEVbCAowWIlICCIM=";
+    arm64-linux_hash = "sha256-hYcah7DplzCP/2NOksy4EPk3ucjFJ5ld0U25+cSeYks=";
     x64-osx_hash = "sha256-cde6p22s0qNomhuYP12/Yr11wPrYDcXnFQ6T8hFKAkE=";
     arm64-osx_hash = "sha256-D2lIegUURjPG9T+rDKAooXn846K7zB221Y206mTETI0=";
   }."${arch}-${os}_hash";
 in
 stdenv.mkDerivation rec {
   pname = "sonarr";
-  version = "4.0.10.2544";
+  version = "4.0.11.2680";
 
   src = fetchurl {
     url = "https://github.com/Sonarr/Sonarr/releases/download/v${version}/Sonarr.main.${version}.${os}-${arch}.tar.gz";

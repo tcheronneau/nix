@@ -1,6 +1,5 @@
 #!/usr/bin/env nix
 #!nix shell nixpkgs#git nixpkgs#gawk nixpkgs#gnused nixpkgs#kubectl nixpkgs#curl nixpkgs#docker nixpkgs#openssh nixpkgs#bash --command bash
-printenv NIX_PATH
 DIR=$(dirname ${BASH_SOURCE[0]})
 cd $DIR
 

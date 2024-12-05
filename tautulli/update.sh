@@ -8,7 +8,7 @@ echo "VERSION ${version}"
 #url="https://github.com/Tautulli/Tautulli/archive/refs/tags/v${version}.tar.gz"
 #
 #hash=$(nix-prefetch-url --type sha256 $url)
-#sriHash="$(nix hash to-sri --type sha256 $hash)"
+#sriHash="$(nix hash convert --hash-algo sha256 --to sri $hash)"
 #sed -i "s|sha256 = \"[a-zA-Z0-9\/+-=]*\";|sha256 = \"$sriHash\";|g" ${dirname}/default.nix
 #sed -i "s/version = \"[0-9.]*\";/version = \"$version\";/g" "$dirname/default.nix"
 #echo $version

@@ -15,7 +15,7 @@ updateHash()
 
     url="https://github.com/Prowlarr/Prowlarr/releases/download/v$version/Prowlarr.master.$version.$os-core-$arch.tar.gz"
     hash=$(nix-prefetch-url --type sha256 $url)
-    sriHash="$(nix hash to-sri --type sha256 $hash)"
+    sriHash="$(nix hash convert --hash-algo sha256 --to sri $hash)"
 
     sed -i "s|$hashKey = \"[a-zA-Z0-9\/+-=]*\";|$hashKey = \"$sriHash\";|g" "$dirname/default.nix"
 }

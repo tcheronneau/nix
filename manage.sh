@@ -1,5 +1,5 @@
-#!/usr/bin/env nix-shell 
-#!nix-shell -i bash -p git gawk gnused kubectl curl docker openssh
+#!/usr/bin/env nix
+#!nix shell nixpkgs#git nixpkgs#gawk nixpkgs#gnused nixpkgs#kubectl nixpkgs#curl nixpkgs#docker nixpkgs#openssh nixpkgs#bash --command bash
 DIR=$(dirname ${BASH_SOURCE[0]})
 cd $DIR
 
@@ -18,7 +18,7 @@ echo "##############################"
 
 NS="media"
 for SOFT in ${SOFTS[@]}
-do 
+do
   echo "Checking update on ${SOFT}"
   echo ""
   echo "------------------------------"
@@ -27,7 +27,7 @@ do
   if [[ `git -C ${DIR} status --porcelain` ]]
   then
     if [ -f "${SOFT}/docker.nix" ]
-    then 
+    then
       echo "Building docker for ${SOFT} on version: ${VERSION}"
       nix build .\#docker-${SOFT}
       docker load < $(readlink ${DIR}/result)

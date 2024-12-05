@@ -17,7 +17,7 @@ updateHash()
       url="https://downloads.plex.tv/plex-media-server-new/${version}/debian/plexmediaserver_${version}_arm64.deb";
     fi
     hash=$(nix-prefetch-url --type sha256 $url)
-    sriHash="$(nix hash to-sri --type sha256 $hash)"
+    sriHash="$(nix hash convert --hash-algo sha256 --to sri $hash)"
     awk -i inplace -v sriHash="$sriHash" -v n=$n '/hash =/ {if (++count == n) sub(/hash = "[a-zA-Z0-9\/+-=]*"/,"hash = \""sriHash"\""); } 1' $dirname/raw.nix
 
 }

@@ -6,14 +6,14 @@
   };
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
-      let 
+      let
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
-      in 
+      in
         {
-          packages = with pkgs;{
+          packages = with pkgs; rec {
             authentik = callPackage ./authentik.nix {};
             beeper = callPackage ./beeper.nix {};
             ente-desktop = callPackage ./ente-desktop.nix {};
@@ -28,7 +28,7 @@
             plex = callPackage ./plex {};
             jackett = callPackage ./jackett {};
             bazarr = callPackage ./bazarr {};
-            protonmail-desktop = pkgs.protonmail-desktop; 
+            protonmail-desktop = pkgs.protonmail-desktop;
             #arm-sonarr = pkgs.pkgsCross.${arm}.callPackage ./sonarr {};
             gil = callPackage ./gil.nix {};
             arm-sonarr = armpkgs.callPackage ./sonarr {};

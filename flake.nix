@@ -10,6 +10,11 @@
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          overlays = [
+            (final: prev: {
+              plexRaw = final.callPackage ./plex/raw.nix {};
+            })
+          ];
         };
       in
         {

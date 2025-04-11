@@ -33,7 +33,7 @@
             plex = callPackage ./plex {};
             jackett = callPackage ./jackett {};
             bazarr = callPackage ./bazarr {};
-            posting = callPackage ./posting.nix {};
+          #posting = callPackage ./posting.nix {};
             protonmail-desktop = pkgs.protonmail-desktop;
             #arm-sonarr = pkgs.pkgsCross.${arm}.callPackage ./sonarr {};
             gil = callPackage ./gil.nix {};

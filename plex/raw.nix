@@ -86,9 +86,6 @@ stdenv.mkDerivation rec {
       forkk
       lnl7
       pjones
-      thoughtpolice
-      maxeaubrey
-      MayNiklas
     ];
     description = "Media library streaming server";
     longDescription = ''

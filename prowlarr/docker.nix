@@ -12,8 +12,8 @@ let
       useradd -u 1005 -r -g prowlarr prowlarr
       mkdir -p /config
       mkdir -p /config/Definitions/Custom
-      ${pkgs.curl}/bin/curl -o /config/Definitions/Custom/yggtorrent.yml https://raw.githubusercontent.com/Jackett/Jackett/master/src/Jackett.Common/Definitions/yggtorrent.yml
-      ${pkgs.curl}/bin/curl -o /config/Definitions/Custom/yggcookie.yml https://raw.githubusercontent.com/Jackett/Jackett/master/src/Jackett.Common/Definitions/yggcookie.yml
+      cp ${./yggtorrent.yml} /config/Definitions/Custom/yggtorrent.yml
+
       chown -R prowlarr:prowlarr /config
     '';
   };

@@ -1,5 +1,5 @@
 { pkgs }:
-let 
+let
   prowlarr = pkgs.callPackage ./default.nix {};
   base = pkgs.dockerTools.buildImage {
     name = "mcth/base";
@@ -11,10 +11,13 @@ let
       groupadd -g 1005 -r prowlarr
       useradd -u 1005 -r -g prowlarr prowlarr
       mkdir -p /config
+      mkdir -p /config/Definitions/Custom
+      ${pkgs.curl}/bin/curl -o /config/Definitions/Custom/yggtorrent.yml https://raw.githubusercontent.com/Jackett/Jackett/master/src/Jackett.Common/Definitions/yggtorrent.yml
+      ${pkgs.curl}/bin/curl -o /config/Definitions/Custom/yggcookie.yml https://raw.githubusercontent.com/Jackett/Jackett/master/src/Jackett.Common/Definitions/yggcookie.yml
       chown -R prowlarr:prowlarr /config
     '';
   };
-in 
+in
   pkgs.dockerTools.buildLayeredImage {
     name = "mcth/prowlarr";
     fromImage = base;

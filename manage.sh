@@ -7,7 +7,7 @@ source .env
 echo $DIR
 if [ -z $1 ]
 then
-  SOFTS=( "plex" "sonarr" "radarr" "prowlarr" "bazarr" )
+  SOFTS=( "plex" "sonarr" "radarr" "tautulli" "prowlarr" "bazarr" )
 else
   SOFTS=$1
 fi
@@ -35,7 +35,7 @@ do
       docker tag mcth/${SOFT}:nix mcth/${SOFT}:${VERSION}
       docker push mcth/${SOFT}
       docker push mcth/${SOFT}:${VERSION}
-      kubectl set image "deploy/${SOFT}" -n "${NS}" "${SOFT}=mcth/${SOFT}:${VERSION:-latest}"
+      #kubectl set image "deploy/${SOFT}" -n "${NS}" "${SOFT}=mcth/${SOFT}:${VERSION:-latest}"
     fi
     git -C ${DIR} pull
     git -C ${DIR} commit -am "Update ${SOFT} with new version : ${VERSION}"

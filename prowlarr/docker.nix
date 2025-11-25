@@ -11,9 +11,6 @@ let
       groupadd -g 1005 -r prowlarr
       useradd -u 1005 -r -g prowlarr prowlarr
       mkdir -p /config
-      mkdir -p /config/Definitions/Custom
-      cp ${./yggtorrent.yml} /config/Definitions/Custom/yggtorrent.yml
-
       chown -R prowlarr:prowlarr /config
     '';
   };

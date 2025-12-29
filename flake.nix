@@ -37,9 +37,10 @@
             protonmail-desktop = pkgs.protonmail-desktop;
             #arm-sonarr = pkgs.pkgsCross.${arm}.callPackage ./sonarr {};
             gil = callPackage ./gil.nix {};
-            arm-sonarr = armpkgs.callPackage ./sonarr {};
+          #arm-sonarr = armpkgs.callPackage ./sonarr {};
             flaresolverr = python3Packages.callPackage ./flaresolverr.nix {};
-            magic-wormhole-transit = python3Packages.callPackage ./magic-wormhole-transit.nix {};
+          #magic-wormhole-transit = python3Packages.callPackage ./magic-wormhole-transit.nix {};
+            netronome = callPackage ./netronome.nix {};
             prowlarr = callPackage ./prowlarr {};
             ombi = callPackage ./ombi {};
             tautulli = python3Packages.callPackage ./tautulli {};

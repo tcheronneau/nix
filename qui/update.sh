@@ -14,7 +14,7 @@ updateHash()
 
     hashKey="${arch}-${os}_hash"
 
-    url="https://github.com/autobrr/qui/releases/download/v${version}/Sonarr.main.${version}.${os}-${arch}.tar.gz";
+    url="https://github.com/autobrr/qui/releases/download/v${version}/qui_${version}_${os}_${arch}.tar.gz";
     hash=$(nix-prefetch-url --type sha256 $url)
     sriHash="$(nix hash convert --hash-algo sha256 --to sri $hash)"
 
@@ -32,12 +32,12 @@ latestTag=$(curl https://api.github.com/repos/autobrr/qui/releases/latest | jq -
 latestVersion="$(expr $latestTag : 'v\(.*\)')"
 
 if [[ "$currentVersion" == "$latestVersion" ]]; then
-    echo "Sonarr is up-to-date: ${currentVersion}"
+    echo "Qui is up-to-date: ${currentVersion}"
     exit 0
 fi
 
 updateVersion $latestVersion
 
-updateHash $latestVersion x64 linux
+updateHash $latestVersion x86_64 linux
 
 echo "VERSION $latestVersion"

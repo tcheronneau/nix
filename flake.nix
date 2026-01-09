@@ -29,6 +29,7 @@
             scripts = callPackage ./mybash {};
             enpass = callPackage ./enpass {};
             sonarr = callPackage ./sonarr {};
+            qui = callPackage ./qui {};
             radarr = callPackage ./radarr {};
             plex = callPackage ./plex {};
             jackett = callPackage ./jackett {};

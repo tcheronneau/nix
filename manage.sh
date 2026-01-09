@@ -7,7 +7,7 @@ source .env
 echo $DIR
 if [ -z $1 ]
 then
-  SOFTS=( "plex" "sonarr" "radarr" "tautulli" "prowlarr" "bazarr" )
+  SOFTS=( "plex" "sonarr" "radarr" "tautulli" "prowlarr" "bazarr" "qui" )
 else
   SOFTS=$1
 fi

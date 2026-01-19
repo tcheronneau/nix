@@ -1,18 +1,16 @@
 {
   fetchFromGitHub,
-  fetchYarnDeps,
   lib,
   makeWrapper,
-  node-gyp,
-  node-pre-gyp,
   nodejs,
   python3,
   stdenv,
-  yarnBuildHook,
-  yarnConfigHook,
-  yarnInstallHook,
+  yarn-berry_4,
 }:
 
+let
+  yarn-berry = yarn-berry_4;
+in
 stdenv.mkDerivation rec {
   pname = "maintainerr";
   version = "2.26.0";
@@ -21,41 +19,45 @@ stdenv.mkDerivation rec {
     owner = "Maintainerr";
     repo = "Maintainerr";
     tag = "v${version}";
-    hash = lib.fakeHash;
+    hash = "sha256-PHu+GQiGuHFESfD3Nuuikum6AqmPeqBUNgEI8ITERhQ=";
   };
 
-  offlineCache = fetchYarnDeps {
-    yarnLock = "${src}/yarn.lock";
-    hash = lib.fakeHash;
-  };
+  missingHashes = ./missing-hashes.json;
 
-  env.CYPRESS_INSTALL_BINARY = 0;
+  offlineCache = yarn-berry.fetchYarnBerryDeps {
+    inherit src missingHashes;
+    hash = "sha256-1Qiy3Duy+jKnALc86LAIP0abpey3wV04SU3hSn0Ny98=";
+  };
 
   nativeBuildInputs = [
     makeWrapper
-    node-gyp
-    node-pre-gyp
     nodejs
     python3
-    yarnBuildHook
-    yarnConfigHook
-    yarnInstallHook
+    yarn-berry
+    yarn-berry.yarnBerryConfigHook
   ];
 
-  postInstall = ''
-    # Fixes "Error: Cannot find module" (bcrypt) and "SQLite package has not been found installed".
-    pushd $out/lib/node_modules/maintainerr/node_modules
-    for module in bcrypt sqlite3; do
-      pushd $module
-      node-pre-gyp rebuild --build-from-source --nodedir=${nodejs} --prefer-offline
-      popd
-    done
+  buildPhase = ''
+    runHook preBuild
+    yarn build
+    runHook postBuild
+  '';
 
+  installPhase = ''
+    runHook preInstall
+
+    mkdir -p $out/lib/maintainerr
+    cp -r apps $out/lib/maintainerr/
+    cp -r packages $out/lib/maintainerr/
+    cp -r node_modules $out/lib/maintainerr/
+
+    mkdir -p $out/bin
     makeWrapper "${lib.getExe nodejs}" "$out/bin/maintainerr" \
       --set NODE_ENV production \
-      --chdir "$out/lib/node_modules/maintainerr" \
-      --add-flags "dist/index.js" \
-      --add-flags "--"
+      --chdir "$out/lib/maintainerr/apps/server" \
+      --add-flags "dist/main.js"
+
+    runHook postInstall
   '';
 
   meta = {

@@ -1,9 +1,6 @@
 { pkgs, stdenv, fetchFromGitHub, bun, makeWrapper }:
 
-stdenv.mkDerivation rec {
-  pname = "ccflare";
-  version = "0.1.0";
-
+let
   src = fetchFromGitHub {
     owner = "snipeship";
     repo = "ccflare";
@@ -11,13 +8,37 @@ stdenv.mkDerivation rec {
     hash = "sha256-JDrk+BDGMI535JGTwZdf+iYAwHouLi9Yq+cRIxc/3Yk=";
   };
 
+  bunDeps = stdenv.mkDerivation {
+    pname = "ccflare-deps";
+    version = "0.1.0";
+    inherit src;
+    nativeBuildInputs = [ bun ];
+    dontFixup = true;
+    buildPhase = ''
+      export HOME=$TMPDIR
+      bun install --frozen-lockfile
+    '';
+    installPhase = ''
+      cp -r node_modules $out
+    '';
+    outputHashMode = "recursive";
+    outputHashAlgo = "sha256";
+    outputHash = "sha256-g3/R6BgZFMAylIR+9yPFlIW6oWHftVLp0D/6iT+tb0w=";
+  };
+in
+stdenv.mkDerivation {
+  pname = "ccflare";
+  version = "0.1.0";
+  inherit src;
+
   nativeBuildInputs = [ bun makeWrapper ];
 
   buildPhase = ''
     runHook preBuild
 
+    cp -r ${bunDeps} node_modules
+    chmod -R u+w node_modules
     export HOME=$TMPDIR
-    bun install --frozen-lockfile
     bun run build
 
     runHook postBuild

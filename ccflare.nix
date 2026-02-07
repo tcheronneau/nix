@@ -57,6 +57,12 @@ stdenv.mkDerivation {
       --add-flags "run" \
       --add-flags "tui"
 
+    makeWrapper ${bun}/bin/bun $out/bin/ccflare-server \
+      --prefix PATH : ${bun}/bin \
+      --chdir $out/lib/ccflare \
+      --add-flags "run" \
+      --add-flags "apps/server/src/server.ts"
+
     runHook postInstall
   '';
 

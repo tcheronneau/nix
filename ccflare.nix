@@ -31,9 +31,10 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/bin
     makeWrapper ${bun}/bin/bun $out/bin/ccflare \
+      --prefix PATH : ${bun}/bin \
+      --chdir $out/lib/ccflare \
       --add-flags "run" \
-      --add-flags "--cwd $out/lib/ccflare" \
-      --add-flags "ccflare"
+      --add-flags "tui"
 
     runHook postInstall
   '';

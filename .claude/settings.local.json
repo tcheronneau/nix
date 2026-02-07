@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(nix build:*)",
+      "Bash(git -C /Users/thomas/Projects/nix add ccflare)",
+      "Bash(nix flake:*)"
+    ]
+  }
+}

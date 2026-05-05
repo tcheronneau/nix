@@ -6,7 +6,10 @@
       "Bash(nix build:*)",
       "Bash(git -C /Users/thomas/Projects/nix add ccflare)",
       "Bash(nix flake:*)",
-      "WebFetch(domain:api.github.com)"
+      "WebFetch(domain:api.github.com)",
+      "Bash(gh api:*)",
+      "Bash(nix-prefetch-url:*)",
+      "Bash(nix hash:*)"
     ]
   }
 }

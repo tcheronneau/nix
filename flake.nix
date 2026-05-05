@@ -69,6 +69,9 @@
             docker-tautulli = callPackage ./tautulli/docker.nix {} ;
             docker-ombi = callPackage ./ombi/docker.nix {} ;
             docker-bazarr = callPackage ./bazarr/docker.nix {} ;
+            reclaimerr = callPackage ./reclaimerr {} ;
+            docker-reclaimerr = callPackage ./reclaimerr/docker.nix { inherit docker-base-latest docker-base-debug ; } ;
+            docker-reclaimerr-debug = callPackage ./reclaimerr/docker.nix { inherit docker-base-latest docker-base-debug ; debug=true; } ;
           };
         });
   }

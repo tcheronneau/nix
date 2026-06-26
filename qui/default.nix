@@ -13,7 +13,7 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "qui";
-  version = "1.20.0";
+  version = "1.21.0";
   src = fetchFromGitHub {
     owner = "autobrr";
     repo = "qui";

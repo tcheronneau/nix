@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "bazarr";
-  version = "1.6.0";
+  version = "1.6.1";
 
   sourceRoot = ".";
 
   src = fetchurl {
     url = "https://github.com/morpheus65535/bazarr/releases/download/v${version}/bazarr.zip";
-    sha256 = "sha256-nHUjJYveWFKNU6zJEjl3QhXkTk8x0oyy+xxiDs2u97M=";
+    sha256 = "sha256-n7g68Cbafpt6pS11R9/RXn76hy7pDHpey+S8byE2cOk=";
   };
 
   nativeBuildInputs = [ unzip makeWrapper ];
